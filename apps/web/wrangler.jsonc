@@ -2,7 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "main": ".open-next/worker.js",
   "name": "fortheopen-dev",
-  "compatibility_date": "2024-12-30",
+  "compatibility_date": "2026-06-01",
   "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
   "assets": {
     "directory": ".open-next/assets",
@@ -18,11 +18,16 @@
     {
       "binding": "DB",
       "database_name": "fortheopen-dev",
-      "database_id": "REPLACE_WITH_D1_ID",
+      "database_id": "be5d086b-372d-4929-b66f-6dea608b61bd",
       "migrations_dir": "../../packages/db/drizzle"
     }
   ],
   "images": {
     "binding": "IMAGES"
-  }
+  },
+  "vars": {
+    "FTOD_DB_DRIVER": "d1",
+    "NEXT_PUBLIC_SITE_URL": "https://fortheopen-dev.emailshashanksn.workers.dev"
+  },
+  "workers_dev": true
 }

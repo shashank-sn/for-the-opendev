@@ -20,3 +20,23 @@ export function getProject(slug: string): Project | undefined {
 export function getStaffPicks(): Project[] {
   return PROJECTS.filter((p) => p.tier === "staff pick");
 }
+
+export const ALL_TAGS = [...new Set(PROJECTS.flatMap((p) => p.tags))].sort();
+
+export function getProjectsByTag(tag: string): Project[] {
+  return PROJECTS.filter((p) => p.tags.includes(tag));
+}
+
+export type TierFilter = Project["tier"] | "all";
+
+export function filterProjects(
+  projects: Project[],
+  opts: { tier?: TierFilter; tag?: string; maxDifficulty?: number },
+): Project[] {
+  return projects.filter((p) => {
+    if (opts.tier && opts.tier !== "all" && p.tier !== opts.tier) return false;
+    if (opts.tag && !p.tags.includes(opts.tag)) return false;
+    if (opts.maxDifficulty !== undefined && p.difficulty > opts.maxDifficulty) return false;
+    return true;
+  });
+}

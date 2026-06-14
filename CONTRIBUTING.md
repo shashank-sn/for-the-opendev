@@ -29,6 +29,8 @@ copy `.env.example` to `apps/web/.env.local` and fill oauth secrets for auth.
 3. set github secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `BETTER_AUTH_SECRET`
 4. push to `main` or run the **deploy** workflow manually — deploy is skipped until `CLOUDFLARE_DEPLOY_ENABLED=true`; then it runs `pnpm --filter @ftod/web build:cloudflare` and `wrangler deploy`
 
+**staging worker (live):** https://fortheopen-dev.emailshashanksn.workers.dev — d1 id is committed in `apps/web/wrangler.jsonc`. point `fortheopen.dev` dns at this worker when ready.
+
 local workers preview:
 
 ```bash

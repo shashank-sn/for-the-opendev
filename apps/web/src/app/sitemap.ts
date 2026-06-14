@@ -1,5 +1,5 @@
 import type { MetadataRoute } from "next";
-import { CATEGORIES, COLLECTIONS, COMPARISONS, PROJECTS } from "@/lib/catalog";
+import { ALL_TAGS, CATEGORIES, COLLECTIONS, COMPARISONS, PROJECTS } from "@/lib/catalog";
 
 const base = process.env.NEXT_PUBLIC_SITE_URL ?? "https://fortheopen.dev";
 
@@ -15,6 +15,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/launches",
     "/comparisons",
     "/collections",
+    "/tags",
     "/dashboard",
   ].map((path) => ({
     url: `${base}${path}`,
@@ -51,5 +52,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...categories, ...projects, ...comparisons, ...collections];
+  const tags = ALL_TAGS.map((tag) => ({
+    url: `${base}/tags/${tag}`,
+    lastModified: now,
+    changeFrequency: "weekly" as const,
+    priority: 0.6,
+  }));
+
+  return [...staticRoutes, ...categories, ...projects, ...comparisons, ...collections, ...tags];
 }

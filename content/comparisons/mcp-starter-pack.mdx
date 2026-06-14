@@ -6,8 +6,6 @@ projects: ["mcp-filesystem", "mcp-github", "mcp-playwright", "mcp-postgres"]
 
 # mcp servers to start with
 
-hand-written comparison — launch edition.
-
 ## projects in this comparison
 
 - [mcp-filesystem](/mcps/mcp-filesystem)
@@ -15,6 +13,10 @@ hand-written comparison — launch edition.
 - [mcp-playwright](/mcps/mcp-playwright)
 - [mcp-postgres](/mcps/mcp-postgres)
 
-## summary
+## verdict
 
-editorial verdict copy expands in phase 1.1 — structure and cross-links ship now.
+start agents with filesystem + github + playwright + postgres mcps — read repo, act in browser, query data without handing unrestricted shell.
+
+## order of operations
+
+filesystem first, github second, playwright when ui verification matters, postgres read-only last with a dedicated db user.

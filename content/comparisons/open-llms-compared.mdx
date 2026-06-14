@@ -6,8 +6,6 @@ projects: ["llama-4", "deepseek-v3", "qwen-3", "phi-4"]
 
 # which open llm should you run locally?
 
-hand-written comparison — launch edition.
-
 ## projects in this comparison
 
 - [llama-4](/models/llama-4)
@@ -15,6 +13,14 @@ hand-written comparison — launch edition.
 - [qwen-3](/models/qwen-3)
 - [phi-4](/models/phi-4)
 
-## summary
+## verdict
 
-editorial verdict copy expands in phase 1.1 — structure and cross-links ship now.
+no single open llm wins every task — llama 4 for general frontier quality, deepseek v3 for value on coding/reasoning, qwen 3 for multilingual, phi 4 for edge efficiency.
+
+## pick by constraint
+
+match model size to your gpu ram first, then benchmark your actual prompts — leaderboard scores lie about your repo.
+
+## serving tip
+
+run via ollama for solo dev, vllm when multiple users hit the same gpu.

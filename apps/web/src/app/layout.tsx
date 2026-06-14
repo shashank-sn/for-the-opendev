@@ -4,6 +4,7 @@ import { GeistSans } from "geist/font/sans";
 import "@ftod/ui/styles/tokens.css";
 import "@ftod/ui/styles/base.css";
 import { AuthProvider } from "@/components/auth-provider";
+import { jsonLdScript, websiteJsonLd } from "@/lib/structured-data";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -17,6 +18,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" data-theme="dark" className={`${GeistSans.variable} ${GeistMono.variable}`}>
       <head>
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: jsonLdScript(websiteJsonLd()) }}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `(function(){try{var t=localStorage.getItem('ftod-theme');if(t)document.documentElement.setAttribute('data-theme',t)}catch(e){}})();`,

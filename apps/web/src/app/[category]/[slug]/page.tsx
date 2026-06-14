@@ -7,6 +7,7 @@ import { CommunityReviews } from "@/components/community-reviews";
 import { PageShell } from "@/components/page-shell";
 import { CATEGORIES, getProject } from "@/lib/catalog";
 import { getProjectContent } from "@/lib/content";
+import { jsonLdScript, projectJsonLd } from "@/lib/structured-data";
 
 function verdictExcerpt(body: string) {
   const match = body.match(/## verdict\s*\n+([\s\S]*?)(?=\n## |\n*$)/i);
@@ -58,6 +59,10 @@ export default async function ProjectPage({
 
   return (
     <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLdScript(projectJsonLd(project)) }}
+      />
       <div className="profile-layout">
         <article>
           <p style={{ color: "var(--text-tertiary)", margin: "0 0 8px", fontSize: 14 }}>

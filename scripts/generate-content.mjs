@@ -2029,9 +2029,271 @@ for (const project of catalog.projects) {
   fs.writeFileSync(file, projectMdx(project));
 }
 
+const richComparisons = {
+  "self-hosted-analytics": `## verdict
+
+posthog if you want product analytics depth; plausible or umami if you want lightweight privacy-first pageviews. all three self-host cleanly.
+
+## pick posthog when
+
+you need flags, replay, funnels, and experiments in one oss stack.
+
+## pick plausible or umami when
+
+you mainly need traffic numbers without cookie-banner friction — plausible leans eu-privacy story, umami is mit and dead simple.
+
+## honest tradeoff
+
+posthog ops cost is real. plausible/umami win on simplicity; posthog wins on product surface area.`,
+  "loom-alternatives": `## verdict
+
+cap is the open loom for indie builders — instant async video, studio polish when you need it, and a self-host path competitors skip.
+
+## pick cap when
+
+you ship demos, changelogs, and customer walkthroughs without per-seat video saas.
+
+## skip cap when
+
+you need enterprise sso video analytics at scale — closed incumbents still lead there.`,
+  "firebase-alternatives": `## verdict
+
+supabase is the default oss firebase — postgres, auth, storage, realtime. pocketbase wins when you want a single binary and minimal ops.
+
+## pick supabase when
+
+you are building a real saas on postgres with auth, rls, and edge functions.
+
+## pick pocketbase when
+
+you want the fastest self-hosted backend for prototypes and internal tools on one vm.
+
+## honest tradeoff
+
+supabase scales with your postgres skills; pocketbase trades flexibility for speed-to-ship.`,
+  "open-llms-compared": `## verdict
+
+no single open llm wins every task — llama 4 for general frontier quality, deepseek v3 for value on coding/reasoning, qwen 3 for multilingual, phi 4 for edge efficiency.
+
+## pick by constraint
+
+match model size to your gpu ram first, then benchmark your actual prompts — leaderboard scores lie about your repo.
+
+## serving tip
+
+run via ollama for solo dev, vllm when multiple users hit the same gpu.`,
+  "llm-inference-stack": `## verdict
+
+ollama is day-one local inference; vllm is when ollama throughput breaks under concurrent users.
+
+## pick ollama when
+
+one developer, laptop or single gpu, fastest time-to-first-token.
+
+## pick vllm when
+
+you expose an openai-compatible api to multiple services or teammates on shared gpu infra.
+
+## honest tradeoff
+
+start ollama always — migrate to vllm when metrics prove you need it, not before.`,
+  "api-clients": `## verdict
+
+bruno stores collections in git — the indie team default. hoppscotch is great for quick browser tests and sharing, lighter on repo-native workflows.
+
+## pick bruno when
+
+api definitions live beside code and you want pr-reviewable collections.
+
+## pick hoppscotch when
+
+you want instant browser testing with minimal local setup.
+
+## honest tradeoff
+
+both beat postman lock-in; bruno wins for teams, hoppscotch wins for speed.`,
+  "automation-platforms": `## verdict
+
+n8n has the deepest integration catalog; activepieces is friendlier for simpler flows; windmill is the power-user choice when you want scripts + internal tools in one place.
+
+## pick n8n when
+
+you need the widest connector library and a mature self-host community.
+
+## pick activepieces when
+
+you want a cleaner mit stack for straightforward automations.
+
+## pick windmill when
+
+developers want code-first workflows with governance — accept agpl ops.`,
+  "electron-alternatives": `## verdict
+
+tauri ships smaller desktop binaries by leaning on the system webview — the credible electron alternative for new indie desktop apps.
+
+## pick tauri when
+
+bundle size and memory matter and you are fine with rust in the toolchain.
+
+## skip tauri when
+
+you need deep native node integration electron already solved — migration cost may not pay off.`,
+  "nextjs-alternatives": `## verdict
+
+next.js for full-stack react saas, astro for content-heavy marketing/docs sites, sveltekit when you want svelte ergonomics with file-based routing.
+
+## pick next.js when
+
+react ecosystem, server components, and vercel-style deploys are the plan.
+
+## pick astro when
+
+seo content, docs, and islands beat spa complexity.
+
+## pick sveltekit when
+
+your team prefers svelte and wants a cohesive full-stack framework without react ceremony.`,
+  "orm-typescript": `## verdict
+
+prisma optimizes developer experience and schema migrations; drizzle stays closer to sql and bundles smaller — both are production-viable.
+
+## pick prisma when
+
+you want the most guided dx for teams newer to sql modeling.
+
+## pick drizzle when
+
+you want sql-first control, lighter workers bundles, and fine-grained queries.
+
+## honest tradeoff
+
+prisma migration magic vs drizzle transparency — pick based on team sql appetite.`,
+  "chat-uis": `## verdict
+
+open webui is the fastest polished chat shell for ollama. librechat is heavier but wins on multi-provider admin and plugins. ollama alone is fine for api-only workflows.
+
+## pick open webui when
+
+you self-host local models and want a shareable ui this afternoon.
+
+## pick librechat when
+
+mixed providers, roles, and plugins matter.
+
+## pick ollama only when
+
+you do not need a ui — just local api endpoints.`,
+  "monitoring-stack": `## verdict
+
+signoz is the oss datadog-shaped option for traces/metrics/logs together. grafana is the visualization layer you pair with many backends. uptime kuma is synthetic uptime without enterprise apm cost.
+
+## pick signoz when
+
+you want one self-hosted observability ui for a small saas.
+
+## pick grafana when
+
+you already have prometheus/loki/tempo and need dashboards.
+
+## add uptime kuma when
+
+you need simple external uptime checks — it complements, not replaces, apm.`,
+  "secrets-management": `## verdict
+
+infisical is the open path for team secrets, env injection, and rotation without vault enterprise pricing.
+
+## pick infisical when
+
+multiple developers need audited secret sync into ci and runtime.
+
+## skip when
+
+a single \`.env\` on one vm still works — infisical pays off with team growth.`,
+  "notion-alternatives": `## verdict
+
+outline is the self-hosted notion-shaped wiki for teams who want real permissions and search on their own infra.
+
+## pick outline when
+
+docs and internal knowledge base are the product surface — not a full workspace replacement for every notion feature.`,
+  "postman-alternatives": `## verdict
+
+same split as api clients: bruno for git-native collections, hoppscotch for browser-first speed. both are mit and avoid postman cloud lock-in.
+
+## default recommendation
+
+bruno for teams shipping api changes in prs; hoppscotch for solo debugging sessions.`,
+  "cli-must-haves": `## verdict
+
+ripgrep + fzf + zoxide + atuin + lazygit is the modern terminal stack — search, jump, history, and git without leaving the keyboard.
+
+## install order
+
+ripgrep and fzf first, zoxide next, atuin when you have multiple machines, lazygit when git log reading becomes daily pain.`,
+  "image-generation": `## verdict
+
+flux.1 dev is the open image checkpoint indies experiment with before midjourney rent — pair with comfyui or diffusers on a gpu you control.
+
+## pick when
+
+marketing assets and ui mock imagery need custom generation and you accept gpu ops.
+
+## skip when
+
+stock assets and legal review are safer than generated faces at scale.`,
+  "embedding-models": `## verdict
+
+nomic embed v2 and bge-m3 are the two open embedding families worth benchmarking for rag — pick by language coverage and your eval set, not leaderboard hype.
+
+## practical tip
+
+index a few hundred real user queries locally before swapping embedders in production.`,
+  "mcp-starter-pack": `## verdict
+
+start agents with filesystem + github + playwright + postgres mcps — read repo, act in browser, query data without handing unrestricted shell.
+
+## order of operations
+
+filesystem first, github second, playwright when ui verification matters, postgres read-only last with a dedicated db user.`,
+  "feature-flags": `## verdict
+
+posthog ships feature flags beside analytics — one less vendor if you already self-host posthog for product telemetry.
+
+## pick when
+
+you run posthog anyway and need simple rollouts without launching a second control plane.
+
+## skip when
+
+you only need flags — dedicated flag services may be lighter if you are not on posthog.`,
+  "coding-agents-compared": `## verdict
+
+cline and continue are ide-native agents; aider is terminal-git-native; command code is a taste-learning cli product; ollama is the local model runtime they all plug into.
+
+## pick cline when
+
+you want vs code autonomy with mcps and model choice.
+
+## pick continue when
+
+you want oss copilot across editors with custom endpoints.
+
+## pick aider when
+
+you live in the terminal and want git-aware patch loops.
+
+## pick command code when
+
+you want a cli that learns conventions — accept proprietary licensing vs pure oss.
+
+## always pair with ollama or vllm when keeping inference local — qwen2.5-coder is the first model to benchmark.`,
+};
+
 for (const comparison of catalog.comparisons) {
   const file = path.join(root, "content/comparisons", `${comparison.slug}.mdx`);
   const list = comparison.projects.map((s) => `- [${s}](/${catalog.projects.find((p) => p.slug === s)?.category ?? "tools"}/${s})`).join("\n");
+  const rich = richComparisons[comparison.slug];
+  const summary = rich ?? `editorial verdict copy expands in phase 1.1 — structure and cross-links ship now.`;
   fs.writeFileSync(
     file,
     `---
@@ -2042,15 +2304,11 @@ projects: [${comparison.projects.map((p) => `"${p}"`).join(", ")}]
 
 # ${comparison.title}
 
-hand-written comparison — launch edition.
-
 ## projects in this comparison
 
 ${list}
 
-## summary
-
-editorial verdict copy expands in phase 1.1 — structure and cross-links ship now.
+${summary}
 `
   );
 }

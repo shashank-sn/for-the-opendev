@@ -6,13 +6,23 @@ projects: ["ollama", "vllm"]
 
 # how to serve open models
 
-hand-written comparison — launch edition.
-
 ## projects in this comparison
 
 - [ollama](/tools/ollama)
 - [vllm](/tools/vllm)
 
-## summary
+## verdict
 
-editorial verdict copy expands in phase 1.1 — structure and cross-links ship now.
+ollama is day-one local inference; vllm is when ollama throughput breaks under concurrent users.
+
+## pick ollama when
+
+one developer, laptop or single gpu, fastest time-to-first-token.
+
+## pick vllm when
+
+you expose an openai-compatible api to multiple services or teammates on shared gpu infra.
+
+## honest tradeoff
+
+start ollama always — migrate to vllm when metrics prove you need it, not before.

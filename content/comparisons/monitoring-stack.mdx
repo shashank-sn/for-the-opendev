@@ -6,14 +6,24 @@ projects: ["signoz", "grafana", "uptime-kuma"]
 
 # self-hosted monitoring
 
-hand-written comparison — launch edition.
-
 ## projects in this comparison
 
 - [signoz](/tools/signoz)
 - [grafana](/tools/grafana)
 - [uptime-kuma](/tools/uptime-kuma)
 
-## summary
+## verdict
 
-editorial verdict copy expands in phase 1.1 — structure and cross-links ship now.
+signoz is the oss datadog-shaped option for traces/metrics/logs together. grafana is the visualization layer you pair with many backends. uptime kuma is synthetic uptime without enterprise apm cost.
+
+## pick signoz when
+
+you want one self-hosted observability ui for a small saas.
+
+## pick grafana when
+
+you already have prometheus/loki/tempo and need dashboards.
+
+## add uptime kuma when
+
+you need simple external uptime checks — it complements, not replaces, apm.

@@ -6,13 +6,23 @@ projects: ["supabase", "pocketbase"]
 
 # open source firebase alternatives
 
-hand-written comparison — launch edition.
-
 ## projects in this comparison
 
 - [supabase](/tools/supabase)
 - [pocketbase](/tools/pocketbase)
 
-## summary
+## verdict
 
-editorial verdict copy expands in phase 1.1 — structure and cross-links ship now.
+supabase is the default oss firebase — postgres, auth, storage, realtime. pocketbase wins when you want a single binary and minimal ops.
+
+## pick supabase when
+
+you are building a real saas on postgres with auth, rls, and edge functions.
+
+## pick pocketbase when
+
+you want the fastest self-hosted backend for prototypes and internal tools on one vm.
+
+## honest tradeoff
+
+supabase scales with your postgres skills; pocketbase trades flexibility for speed-to-ship.

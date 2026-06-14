@@ -14,10 +14,10 @@ for the open dev is a curated discovery layer for solo and indie builders — no
 
 ## what you get
 
-- **100 launch profiles** across tools, frameworks, models, clis, mcps, datasets, and resources
+- **104 launch profiles** across tools, frameworks, models, clis, mcps, datasets, and resources
 - **staff picks** with full editorial depth — verdict, install path, commercial use notes
-- **20 comparisons** — self-hosted analytics, firebase alternatives, local llms, and more
-- **8 collections** — indie saas infra, local ai stack, homelab essentials, terminal productivity
+- **21 comparisons** — self-hosted analytics, coding agents, local llms, and more
+- **9 collections** — indie saas infra, local ai stack, coding agent stack, terminal productivity
 - **community layer** — lists, structured reviews, project submissions, launch votes
 - **search** — pagefind-powered, no external index
 
