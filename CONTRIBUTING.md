@@ -13,12 +13,21 @@ thanks for helping build for the open dev.
 
 ```bash
 pnpm install
+pnpm codegraph:init    # builds local CodeGraph index (one-time per clone)
 pnpm db:init
 pnpm content:generate
 pnpm dev
 ```
 
-run `pnpm typecheck`, `pnpm build`, and `pnpm --filter @ftod/web build:cloudflare` (with `FTOD_DB_DRIVER=d1`) before opening a pr.
+### codegraph (default for agents & local dev)
+
+this repo indexes code with [codegraph](https://www.npmjs.com/package/@colbymchenry/codegraph). the sqlite db in `.codegraph/` is gitignored — each machine builds its own.
+
+- **agents:** use codegraph mcp tools for exploration (see `AGENTS.md`). cursor/claude configs live in `.cursor/` and `.mcp.json`.
+- **after code changes:** `pnpm codegraph:sync` — git hooks install automatically on `pnpm install` (`post-commit`, `post-merge`, `post-checkout`).
+- **check index:** `pnpm codegraph:status`
+
+run `pnpm typecheck`, `pnpm build`, `pnpm codegraph:sync`, and `pnpm --filter @ftod/web build:cloudflare` (with `FTOD_DB_DRIVER=d1`) before opening a pr.
 
 copy `.env.example` to `apps/web/.env.local` and fill oauth secrets for auth.
 

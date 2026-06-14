@@ -10,7 +10,12 @@
     "db:migrate": "pnpm --filter @ftod/db migrate",
     "db:init": "node scripts/init-db.mjs",
     "content:generate": "node scripts/generate-content.mjs",
-    "typecheck": "pnpm -r typecheck"
+    "typecheck": "pnpm -r typecheck",
+    "codegraph:init": "npx @colbymchenry/codegraph init -i",
+    "codegraph:sync": "npx @colbymchenry/codegraph sync",
+    "codegraph:status": "npx @colbymchenry/codegraph status",
+    "codegraph:hooks": "node scripts/install-codegraph-hooks.mjs",
+    "prepare": "node scripts/install-codegraph-hooks.mjs"
   },
   "engines": {
     "node": ">=20"
