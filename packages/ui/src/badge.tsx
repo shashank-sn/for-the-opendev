@@ -15,12 +15,12 @@ export function Badge({ tier, children }: { tier?: string; children: ReactNode }
         display: "inline-flex",
         alignItems: "center",
         padding: "3px 8px",
-        borderRadius: 8,
+        borderRadius: 6,
         fontSize: 11,
         fontWeight: 500,
+        letterSpacing: "-0.01em",
         background: "var(--active-bg)",
         color,
-        border: `1px solid ${color}22`,
         whiteSpace: "nowrap",
       }}
     >
