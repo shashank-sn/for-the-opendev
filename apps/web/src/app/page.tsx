@@ -3,6 +3,7 @@ import Link from "next/link";
 import { NewsletterSignup } from "@/components/newsletter-signup";
 import { PageShell } from "@/components/page-shell";
 import { ProjectCard } from "@/components/project-card";
+import { SponsorHeroPanel } from "@/components/sponsor-promo";
 import { CATEGORIES, PROJECTS, getStaffPicks } from "@/lib/catalog";
 import { SPONSOR_URLS } from "@/lib/sponsors";
 
@@ -23,14 +24,16 @@ export default function HomePage() {
           paid rankings.
         </p>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
+          <Button href={SPONSOR_URLS["open-supporter"]}>sponsor · $1/mo</Button>
           <Link href="/tools">
-            <Button>browse tools</Button>
+            <Button variant="secondary">browse tools</Button>
           </Link>
-          <Button href={SPONSOR_URLS["open-supporter"]} variant="secondary">
-            sponsor · $1/mo
-          </Button>
         </div>
       </section>
+
+      <div style={{ marginBottom: 56 }}>
+        <SponsorHeroPanel />
+      </div>
 
       <section style={{ marginBottom: 56 }}>
         <h2 style={{ margin: "0 0 16px", fontSize: 22 }}>seven categories</h2>
@@ -79,24 +82,7 @@ export default function HomePage() {
         <NewsletterSignup />
       </section>
 
-      <section
-        style={{
-          marginBottom: 56,
-          padding: 28,
-          borderRadius: "var(--radius-lg)",
-          border: "1px solid var(--border-default)",
-          background: "var(--accent-subtle)",
-        }}
-      >
-        <h2 style={{ margin: "0 0 8px", fontSize: 22 }}>discovery should be free</h2>
-        <p style={{ margin: "0 0 16px", color: "var(--text-secondary)", maxWidth: 560 }}>
-          for the open dev is open source. if we saved you an hour of research, sponsor the repo on github. $1/month
-          keeps the lights on.
-        </p>
-        <Link href="/supporters">
-          <Button>see supporter tiers</Button>
-        </Link>
-      </section>
+
     </PageShell>
   );
 }

@@ -1,9 +1,10 @@
 "use client";
 
-import { Logo, ThemeToggle, AuthModal } from "@ftod/ui";
+import { Button, Logo, ThemeToggle, AuthModal } from "@ftod/ui";
 import Link from "next/link";
 import { useState } from "react";
 import { CATEGORIES } from "@/lib/catalog";
+import { SPONSOR_URLS } from "@/lib/sponsors";
 import { authClient } from "@/lib/auth-client";
 import { useAuthSession } from "./auth-provider";
 
@@ -62,8 +63,14 @@ export function SiteHeader() {
             <Link href="/search" style={{ fontSize: 14, color: "var(--text-secondary)" }}>
               search
             </Link>
-            <Link href="/supporters" style={{ fontSize: 14, color: "var(--accent-text)" }}>
-              sponsor
+            <Button
+              href={SPONSOR_URLS["open-supporter"]}
+              style={{ padding: "8px 14px", fontSize: 14, whiteSpace: "nowrap" }}
+            >
+              sponsor · $1
+            </Button>
+            <Link href="/supporters" style={{ fontSize: 13, color: "var(--text-tertiary)" }}>
+              tiers
             </Link>
             {!isPending && session?.user ? (
               <>

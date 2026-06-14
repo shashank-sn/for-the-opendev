@@ -1,10 +1,12 @@
 import Link from "next/link";
 import { NewsletterSignup } from "@/components/newsletter-signup";
+import { SponsorFooterBand } from "@/components/sponsor-promo";
 import { SPONSOR_URLS } from "@/lib/sponsors";
 
 export function SiteFooter() {
   return (
     <footer style={{ borderTop: "1px solid var(--border-default)", marginTop: 80 }}>
+      <SponsorFooterBand />
       <div style={{ maxWidth: 1120, margin: "0 auto", padding: "40px 24px 56px" }}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: 32 }}>
           <div>
