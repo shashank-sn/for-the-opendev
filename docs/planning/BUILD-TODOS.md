@@ -32,7 +32,7 @@ sponsors profile is live: https://github.com/sponsors/shashank-sn
   custom:
     - https://fortheopen.dev/supporters
   ```
-- [ ] verify purple **sponsor** button appears on repo page
+- [ ] verify purple **sponsor** button appears on repo page (check after push — FUNDING.yml is on main)
 - [x] add sponsor table + shields badges to `README.md`
 - [x] add `SECURITY.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`
 - [ ] test tier urls from site match dashboard slugs:
@@ -53,7 +53,8 @@ sponsors profile is live: https://github.com/sponsors/shashank-sn
 ## 2. infrastructure (phase 0)
 
 - [ ] register / point `fortheopen.dev` dns → cloudflare
-- [ ] create `fortheopendev` github org (or launch under `shashank-sn` first)
+- [x] repo live at https://github.com/shashank-sn/for-the-opendev
+- [ ] create `fortheopendev` github org (optional — migrate later)
 - [ ] cloudflare pages project + workers
 - [ ] d1 database + schema migrated
 - [ ] github actions deploy pipeline (`main` → cloudflare)
