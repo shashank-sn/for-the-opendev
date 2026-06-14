@@ -14,3 +14,18 @@ pagefind
 .turbo
 coverage
 .data
+
+# planning docs — local only, never ship to public repo
+docs/
+BRAND.md
+BUILD-TODOS.md
+DESIGN-SYSTEM.md
+INFORMATION-ARCHITECTURE.md
+LAUNCH-CATALOG.md
+MONETIZATION.md
+OPEN-SOURCE-STACK.md
+PRD.md
+REPOSITORY.md
+ROADMAP.md
+USER-FLOWS.md
+core idea.rtf

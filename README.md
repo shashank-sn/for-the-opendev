@@ -16,6 +16,7 @@ a trusted layer for discovering and building with open source — curated profil
 
 ```bash
 pnpm install
+pnpm db:init
 pnpm content:generate
 pnpm dev
 ```
@@ -36,7 +37,6 @@ for-the-opendev/
 │   ├── db/             # drizzle schema + d1 migrations
 │   └── ui/             # shared components + design tokens
 ├── content/            # mdx profiles, comparisons, collections
-├── docs/planning/      # product specs
 └── scripts/            # content generation
 ```
 
@@ -64,18 +64,6 @@ built entirely on open source:
 - cloudflare — hosting (pages + d1)
 - pagefind — search
 - lucide + geist — icons & typography
-
-see [docs/planning/OPEN-SOURCE-STACK.md](docs/planning/OPEN-SOURCE-STACK.md) for the full policy.
-
----
-
-## docs
-
-product specs and build todos live in [`docs/planning/`](docs/planning/). start with:
-
-- [BUILD-TODOS.md](docs/planning/BUILD-TODOS.md) — execution checklist
-- [PRD.md](docs/planning/PRD.md) — product requirements
-- [LAUNCH-CATALOG.md](docs/planning/LAUNCH-CATALOG.md) — first 100 projects
 
 ---
 
