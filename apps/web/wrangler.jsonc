@@ -25,9 +25,18 @@
   "images": {
     "binding": "IMAGES"
   },
+  "send_email": [
+    {
+      "name": "EMAIL",
+      "remote": true
+    }
+  ],
   "vars": {
     "FTOD_DB_DRIVER": "d1",
-    "NEXT_PUBLIC_SITE_URL": "https://fortheopen-dev.emailshashanksn.workers.dev"
+    "NEXT_PUBLIC_SITE_URL": "https://fortheopen-dev.emailshashanksn.workers.dev",
+    "EMAIL_FROM": "noreply@fortheopen.dev",
+    "EMAIL_FROM_NAME": "for the open dev",
+    "EMAIL_REPLY_TO": "hello@fortheopen.dev"
   },
   "workers_dev": true
 }

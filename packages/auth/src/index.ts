@@ -5,7 +5,11 @@ import { username } from "better-auth/plugins/username";
 import type { FtodDb } from "@ftod/db";
 import { account, authSchema, user } from "@ftod/db/schema";
 
-export function createAuth(db: FtodDb) {
+export type CreateAuthOptions = {
+  onMagicLink?: (params: { email: string; url: string }) => Promise<void>;
+};
+
+export function createAuth(db: FtodDb, options: CreateAuthOptions = {}) {
   return betterAuth({
     baseURL: process.env.BETTER_AUTH_URL,
     secret: process.env.BETTER_AUTH_SECRET ?? "dev-secret-change-in-production-32chars",
@@ -50,12 +54,11 @@ export function createAuth(db: FtodDb) {
       }),
       magicLink({
         sendMagicLink: async ({ email, url }) => {
-          if (process.env.SMTP_HOST) {
-            // production: wire to smtp transport
-            console.info(`[magic-link] ${email} → ${url}`);
-          } else {
-            console.info(`[magic-link] ${email} → ${url}`);
+          if (options.onMagicLink) {
+            await options.onMagicLink({ email, url });
+            return;
           }
+          console.info(`[magic-link] ${email} → ${url}`);
         },
       }),
     ],

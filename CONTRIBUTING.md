@@ -33,6 +33,18 @@ copy `.env.example` to `apps/web/.env.local` and fill oauth secrets for auth.
 
 **sponsor tier links:** edit `apps/web/src/lib/sponsors.ts` — after creating $1/$5/$100 tiers in [GitHub Sponsors](https://github.com/sponsors/shashank-sn), paste each tier's `tier_id` from the dashboard share link into `githubTierId` for direct checkout urls.
 
+### email (cloudflare)
+
+transactional email (magic links, future notifications) uses **cloudflare email service** via the worker `EMAIL` binding — not smtp.
+
+1. add `fortheopen.dev` to cloudflare dns
+2. enable sending: `wrangler email sending enable fortheopen.dev`
+3. optional routing for `hello@` / `security@`: `wrangler email routing enable fortheopen.dev`
+4. set `EMAIL_FROM`, `EMAIL_FROM_NAME`, `EMAIL_REPLY_TO` in `apps/web/wrangler.jsonc` vars (or worker secrets)
+5. redeploy — better-auth magic links send through `apps/web/src/lib/email.ts`
+
+local dev without a worker: set `CLOUDFLARE_ACCOUNT_ID` + `CLOUDFLARE_API_TOKEN` in `apps/web/.env.local` for REST api fallback, or watch console for logged magic-link urls.
+
 local workers preview:
 
 ```bash
