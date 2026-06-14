@@ -32,7 +32,7 @@ export function NewsletterSignup({ compact }: Props) {
       }
 
       setStatus("success");
-      setMessage("check your inbox to confirm — welcome to the list.");
+      setMessage("you're on the list. welcome email incoming.");
       setEmail("");
     } catch {
       setStatus("error");
@@ -47,7 +47,7 @@ export function NewsletterSignup({ compact }: Props) {
       </p>
       {!compact && (
         <p style={{ margin: "0 0 14px", color: "var(--text-secondary)", fontSize: 14, maxWidth: 360 }}>
-          new profiles, comparisons, and launch picks — self-hosted via listmonk. no ads.
+          new profiles, comparisons, and launch picks. routed via cloudflare. no ads.
         </p>
       )}
       <form onSubmit={onSubmit} style={{ display: "flex", gap: 8, flexWrap: "wrap", maxWidth: 420 }}>

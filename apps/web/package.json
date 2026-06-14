@@ -9,7 +9,7 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "pagefind": "pagefind --site .next/server/app --output-path public/pagefind",
-    "build:cloudflare": "FTOD_DB_DRIVER=d1 pnpm build && pnpm pagefind && FTOD_DB_DRIVER=d1 opennextjs-cloudflare build --skipNextBuild",
+    "build:cloudflare": "FTOD_DB_DRIVER=d1 pnpm build && pnpm pagefind && FTOD_DB_DRIVER=d1 opennextjs-cloudflare build --skipNextBuild && node scripts/patch-worker-email.mjs",
     "preview:cloudflare": "opennextjs-cloudflare preview",
     "deploy:cloudflare": "pnpm build:cloudflare && opennextjs-cloudflare deploy"
   },
@@ -26,6 +26,7 @@
     "next": "^15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "postal-mime": "^2.4.3",
     "react-markdown": "^9.0.3"
   },
   "devDependencies": {

@@ -18,11 +18,14 @@ const nextConfig: NextConfig = {
     if (useD1) {
       config.resolve.alias = {
         ...config.resolve.alias,
+        "@ftod/db/schema": path.join(root, "packages/db/src/schema.ts"),
+        "@ftod/db/email-store": path.join(root, "packages/db/src/email-store.ts"),
         "@ftod/db$": path.join(root, "packages/db/src/d1.ts"),
       };
     }
     return config;
   },
+  serverExternalPackages: useD1 ? ["@libsql/client", "libsql"] : undefined,
 };
 
 initOpenNextCloudflareForDev();

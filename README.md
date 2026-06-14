@@ -47,9 +47,8 @@ built entirely on open source:
 - [better-auth](https://better-auth.com) — auth
 - [next.js](https://nextjs.org) — app
 - [cloudflare workers](https://workers.cloudflare.com) + d1 — hosting & database
-- [cloudflare email service](https://developers.cloudflare.com/email-service/) — transactional email (magic links)
+- [cloudflare email service](https://developers.cloudflare.com/email-service/) — all email (send, receive, newsletter)
 - [pagefind](https://pagefind.app) — search
-- [listmonk](https://listmonk.app) — newsletter (self-hosted)
 - lucide + geist — icons & type
 
 ---

@@ -126,4 +126,33 @@ export const launchVotes = sqliteTable("launch_votes", {
   createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
 });
 
+export const emails = sqliteTable("emails", {
+  id: text("id").primaryKey(),
+  direction: text("direction").notNull(), // inbound | outbound
+  status: text("status").notNull(), // received | sent | failed | queued
+  fromAddress: text("from_address").notNull(),
+  toAddress: text("to_address").notNull(),
+  replyTo: text("reply_to"),
+  subject: text("subject"),
+  textBody: text("text_body"),
+  htmlBody: text("html_body"),
+  messageId: text("message_id"),
+  inReplyTo: text("in_reply_to"),
+  headersJson: text("headers_json"),
+  provider: text("provider").notNull().default("cloudflare"),
+  providerResponse: text("provider_response"),
+  error: text("error"),
+  rawSize: integer("raw_size"),
+  createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+});
+
+export const newsletterSubscribers = sqliteTable("newsletter_subscribers", {
+  id: text("id").primaryKey(),
+  email: text("email").notNull().unique(),
+  name: text("name"),
+  status: text("status").notNull().default("active"), // active | unsubscribed
+  subscribedAt: integer("subscribed_at", { mode: "timestamp" }).notNull(),
+  unsubscribedAt: integer("unsubscribed_at", { mode: "timestamp" }),
+});
+
 export const authSchema = { user, session, account, verification };

@@ -1,4 +1,4 @@
-import { subscribeToNewsletter } from "@/lib/listmonk";
+import { subscribeToNewsletter } from "@/lib/newsletter";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {

@@ -36,7 +36,7 @@ tool pickers live in `.cursor/rules/codegraph.mdc` and `.claude/CLAUDE.md`.
 - monorepo: `apps/web` (next.js on cloudflare workers + d1), `packages/*` (ui, auth, db).
 - content: `/content`, generated via `pnpm content:generate`.
 - deploy: cloudflare workers. staging at `fortheopen-dev.emailshashanksn.workers.dev`.
-- auth email: cloudflare email service binding in `apps/web/src/lib/email.ts`. smtp is out.
+- email: all mail via cloudflare (send + route). stored in sql `emails` table. see `apps/web/src/lib/email.ts` and `apps/web/cloudflare/email-inbound.mjs`.
 
 ## before you ship
 
