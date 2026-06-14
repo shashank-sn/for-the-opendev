@@ -48,6 +48,7 @@ built entirely on open source:
 - [next.js](https://nextjs.org) — app
 - [cloudflare workers](https://workers.cloudflare.com) + d1 — hosting & database
 - [cloudflare email service](https://developers.cloudflare.com/email-service/) — all email (send, receive, newsletter)
+- [plausible](https://github.com/plausible/analytics) — analytics (self-hosted)
 - [pagefind](https://pagefind.app) — search
 - lucide + geist — icons & type
 

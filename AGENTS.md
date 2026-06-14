@@ -37,6 +37,7 @@ tool pickers live in `.cursor/rules/codegraph.mdc` and `.claude/CLAUDE.md`.
 - content: `/content`, generated via `pnpm content:generate`.
 - deploy: cloudflare workers. staging at `fortheopen-dev.emailshashanksn.workers.dev`.
 - email: all mail via cloudflare (send + route). stored in sql `emails` table. see `apps/web/src/lib/email.ts` and `apps/web/cloudflare/email-inbound.mjs`.
+- analytics: self-hosted plausible script + `/analytics` dashboard (password-only). stats api proxied in `apps/web/src/lib/plausible.ts`.
 
 ## before you ship
 

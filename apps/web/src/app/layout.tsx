@@ -30,12 +30,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <AuthProvider>{children}</AuthProvider>
-        {process.env.NEXT_PUBLIC_UMAMI_URL && process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID && (
+        {process.env.NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL && process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN && (
           <script
-            async
             defer
-            data-website-id={process.env.NEXT_PUBLIC_UMAMI_WEBSITE_ID}
-            src={`${process.env.NEXT_PUBLIC_UMAMI_URL}/script.js`}
+            data-domain={process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN}
+            src={process.env.NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL}
           />
         )}
       </body>

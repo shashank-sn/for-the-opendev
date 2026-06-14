@@ -61,6 +61,15 @@ newsletter subscribers live in `newsletter_subscribers`. admins can list stored 
 
 local dev without a worker: set `CLOUDFLARE_ACCOUNT_ID` + `CLOUDFLARE_API_TOKEN` in `apps/web/.env.local` for REST send fallback. outbound still persists to sql. inbound needs routing on a deployed worker.
 
+### analytics (plausible)
+
+tracking uses the [plausible](https://github.com/plausible/analytics) script. stats dashboard lives at `/analytics` with password-only login (`ANALYTICS_PASSWORD`).
+
+1. self-host plausible ce or use plausible cloud for your domain
+2. create a **stats api key** in plausible settings
+3. set `NEXT_PUBLIC_PLAUSIBLE_DOMAIN`, `NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL`, `PLAUSIBLE_API_URL`, `PLAUSIBLE_API_KEY`, `PLAUSIBLE_SITE_ID`, `ANALYTICS_PASSWORD` in `apps/web/.env.local` (and worker secrets in prod)
+4. visit `/analytics`, enter the password — pulls visitors, pages, sources, countries, devices, utm, timeseries via plausible stats api v2
+
 local workers preview:
 
 ```bash
