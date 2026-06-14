@@ -38,3 +38,6 @@ jobs:
         run: pnpm --filter @ftod/web build:cloudflare
         env:
           FTOD_DB_DRIVER: d1
+          BETTER_AUTH_URL: http://localhost:3000
+          BETTER_AUTH_SECRET: ci-build-secret-32-characters-minimum
+          NEXT_PUBLIC_SITE_URL: http://localhost:3000

@@ -28,6 +28,9 @@ const nextConfig: NextConfig = {
   serverExternalPackages: useD1 ? ["@libsql/client", "libsql"] : undefined,
 };
 
-initOpenNextCloudflareForDev();
+// only wire remote bindings during local `next dev` — not ci/production builds
+if (process.env.NODE_ENV === "development") {
+  initOpenNextCloudflareForDev();
+}
 
 export default nextConfig;
