@@ -14,13 +14,14 @@ export function Badge({ tier, children }: { tier?: string; children: ReactNode }
       style={{
         display: "inline-flex",
         alignItems: "center",
-        padding: "2px 8px",
-        borderRadius: "var(--radius-sm)",
-        fontSize: 12,
+        padding: "3px 8px",
+        borderRadius: 8,
+        fontSize: 11,
         fontWeight: 500,
-        background: "var(--bg-subtle)",
+        background: "var(--active-bg)",
         color,
-        border: `1px solid ${color}33`,
+        border: `1px solid ${color}22`,
+        whiteSpace: "nowrap",
       }}
     >
       {children}

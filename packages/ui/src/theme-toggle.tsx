@@ -31,13 +31,16 @@ export function ThemeToggle() {
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",
-        width: 36,
-        height: 36,
+        width: 40,
+        height: 40,
         borderRadius: "var(--radius-md)",
-        border: "1px solid var(--border-default)",
+        boxShadow: "var(--shadow-border)",
         background: "var(--bg-surface)",
         color: "var(--text-secondary)",
         cursor: "pointer",
+        transitionProperty: "box-shadow, scale",
+        transitionDuration: "150ms",
+        transitionTimingFunction: "ease-out",
       }}
     >
       {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}

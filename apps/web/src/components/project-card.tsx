@@ -1,24 +1,23 @@
-import { Badge, Card } from "@ftod/ui";
+import { Badge } from "@ftod/ui";
+import Link from "next/link";
 import type { Project } from "@/lib/catalog";
 
 export function ProjectCard({ project }: { project: Project }) {
   return (
-    <Card href={`/${project.category}/${project.slug}`}>
-      <div style={{ display: "flex", justifyContent: "space-between", gap: 12, marginBottom: 8 }}>
-        <h3 className="project-name preserve-case" style={{ margin: 0, fontSize: 18 }}>
+    <Link href={`/${project.category}/${project.slug}`} className="ft-card" style={{ color: "inherit" }}>
+      <div className="ft-card-header">
+        <h3 className="ft-card-title preserve-case" style={{ margin: 0 }}>
           {project.name}
         </h3>
         <Badge tier={project.tier}>{project.tier}</Badge>
       </div>
-      <p style={{ margin: "0 0 12px", color: "var(--text-secondary)", fontSize: 14 }}>
+      <p className="ft-card-desc">
         {project.replaces !== "—" ? `replaces ${project.replaces}` : project.category}
       </p>
-      <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
-        <span className="license-badge preserve-case" style={{ fontSize: 12, color: "var(--text-tertiary)" }}>
-          {project.license}
-        </span>
-        <span style={{ fontSize: 12, color: "var(--text-tertiary)" }}>difficulty {project.difficulty}/5</span>
+      <div className="ft-card-meta">
+        <span className="license-badge preserve-case">{project.license}</span>
+        <span>difficulty {project.difficulty}/5</span>
       </div>
-    </Card>
+    </Link>
   );
 }

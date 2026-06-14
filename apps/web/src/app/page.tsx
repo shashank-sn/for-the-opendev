@@ -1,66 +1,83 @@
-import { Button } from "@ftod/ui";
 import Link from "next/link";
-import { NewsletterSignup } from "@/components/newsletter-signup";
 import { PageShell } from "@/components/page-shell";
 import { ProjectCard } from "@/components/project-card";
 import { SponsorHeroPanel } from "@/components/sponsor-promo";
-import { CATEGORIES, PROJECTS, getStaffPicks } from "@/lib/catalog";
-import { SPONSOR_URLS } from "@/lib/sponsors";
+import { CATEGORIES, COLLECTIONS, PROJECTS, getStaffPicks } from "@/lib/catalog";
 
 export default function HomePage() {
-  const staffPicks = getStaffPicks().slice(0, 8);
+  const staffPicks = getStaffPicks().slice(0, 6);
 
   return (
     <PageShell>
-      <section style={{ padding: "24px 0 56px", maxWidth: 720 }}>
-        <p style={{ color: "var(--accent-text)", margin: "0 0 12px", fontSize: 14 }}>
-          launch catalog · {PROJECTS.length} profiles
+      {/* hero */}
+      <section className="stagger-item" style={{ marginBottom: 48, maxWidth: 600 }}>
+        <p style={{ color: "var(--accent-text)", margin: "0 0 10px", fontSize: 13, fontWeight: 500 }}>
+          {PROJECTS.length} curated profiles
         </p>
-        <h1 style={{ margin: "0 0 16px", fontSize: 48, lineHeight: 1.1, letterSpacing: "-0.03em" }}>
+        <h1 style={{ margin: "0 0 14px", fontSize: 36, lineHeight: 1.1, letterSpacing: "-0.03em", fontWeight: 600 }}>
           discover open source worth your time
         </h1>
-        <p style={{ margin: "0 0 28px", color: "var(--text-secondary)", fontSize: 18, lineHeight: 1.6 }}>
-          curated builder profiles, honest verdicts, and comparisons — not another directory. everything lowercase. no
-          paid rankings.
+        <p style={{ margin: 0, color: "var(--text-secondary)", fontSize: 16, lineHeight: 1.6 }}>
+          curated builder profiles, honest verdicts, and comparisons — not another directory.
         </p>
-        <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-          <Button href={SPONSOR_URLS["open-supporter"]}>sponsor · $1/mo</Button>
-          <Link href="/tools">
-            <Button variant="secondary">browse tools</Button>
-          </Link>
-        </div>
       </section>
 
-      <div style={{ marginBottom: 56 }}>
+      {/* sponsor panel */}
+      <section className="stagger-item" style={{ marginBottom: 48 }}>
         <SponsorHeroPanel />
-      </div>
+      </section>
 
-      <section style={{ marginBottom: 56 }}>
-        <h2 style={{ margin: "0 0 16px", fontSize: 22 }}>seven categories</h2>
-        <div style={{ display: "flex", gap: 10, flexWrap: "wrap" }}>
+      {/* categories */}
+      <section className="stagger-item" style={{ marginBottom: 48 }}>
+        <h2 style={{ margin: "0 0 14px", fontSize: 18, fontWeight: 600, letterSpacing: "-0.01em" }}>categories</h2>
+        <div className="category-grid">
           {CATEGORIES.map((c) => (
-            <Link
-              key={c.slug}
-              href={`/${c.slug}`}
-              style={{
-                padding: "10px 14px",
-                borderRadius: "var(--radius-md)",
-                border: "1px solid var(--border-default)",
-                background: "var(--bg-surface)",
-                color: "var(--text-primary)",
-              }}
-            >
-              {c.label} · {c.count}
+            <Link key={c.slug} href={`/${c.slug}`} className="category-tile">
+              {c.label}
+              <span className="category-tile-count">{c.count}</span>
             </Link>
           ))}
         </div>
       </section>
 
-      <section style={{ marginBottom: 56 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
-          <h2 style={{ margin: 0, fontSize: 22 }}>staff picks</h2>
-          <Link href="/tools" style={{ fontSize: 14 }}>
-            view all
+      {/* collections */}
+      <section className="stagger-item" style={{ marginBottom: 48 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
+          <h2 style={{ margin: 0, fontSize: 18, fontWeight: 600, letterSpacing: "-0.01em" }}>collections</h2>
+          <Link href="/collections" style={{ fontSize: 13, color: "var(--text-tertiary)" }}>
+            view all →
+          </Link>
+        </div>
+        <div className="grid-cards">
+          {COLLECTIONS.slice(0, 6).map((c) => {
+            const icons = c.projects.slice(0, 5).map((slug) => {
+              const p = PROJECTS.find((proj) => proj.slug === slug);
+              return p ? p.name.charAt(0).toUpperCase() : "?";
+            });
+            return (
+              <Link key={c.slug} href={`/collections/${c.slug}`} className="collection-card">
+                <div className="collection-card-icons">
+                  {icons.map((initial, i) => (
+                    <div key={i} className="collection-card-icon">{initial}</div>
+                  ))}
+                </div>
+                <h3 className="collection-card-title">{c.title}</h3>
+                <p className="collection-card-desc">
+                  {c.projects.length} curated open source projects
+                </p>
+                <div className="collection-card-count">{c.projects.length} tools</div>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* staff picks */}
+      <section className="stagger-item" style={{ marginBottom: 48 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
+          <h2 style={{ margin: 0, fontSize: 18, fontWeight: 600, letterSpacing: "-0.01em" }}>staff picks</h2>
+          <Link href="/launches" style={{ fontSize: 13, color: "var(--text-tertiary)" }}>
+            view all →
           </Link>
         </div>
         <div className="grid-cards">
@@ -69,20 +86,6 @@ export default function HomePage() {
           ))}
         </div>
       </section>
-
-      <section
-        style={{
-          marginBottom: 56,
-          padding: 28,
-          borderRadius: "var(--radius-lg)",
-          border: "1px solid var(--border-default)",
-          background: "var(--bg-surface)",
-        }}
-      >
-        <NewsletterSignup />
-      </section>
-
-
     </PageShell>
   );
 }
