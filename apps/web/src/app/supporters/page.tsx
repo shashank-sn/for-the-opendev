@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { Button } from "@ftod/ui";
 import { PageShell } from "@/components/page-shell";
 import { SPONSOR_TIERS } from "@/lib/catalog";

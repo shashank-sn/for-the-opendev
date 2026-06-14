@@ -13,20 +13,20 @@ lastVerified: 2026-06-14
 
 ## verdict
 
-drizzle is on the launch 100 catalog. editorial deep-dive coming soon — metadata verified against github.
+drizzle is the sql-forward orm we run on fortheopen.dev with better-auth. thin abstraction, great typescript inference, sqlite and postgres without codegen ceremony.
 
 ## who it's for
 
-builders evaluating oss options in frameworks.
+builders who want to read the sql their app emits and keep bundles small on edge runtimes.
 
 ## skip if
 
-maintenance, license, or setup complexity doesn't match your timeline — check github activity before committing.
+you want a gui-first schema designer for non-technical teammates — prisma studio wins there.
 
 ## install path
 
-see the official readme on github. difficulty 2/5 for a solo dev.
+`pnpm add drizzle-orm`, define tables, run migrations, wire `getDb()` singleton.
 
 ## commercial use
 
-<span class="preserve-case">Apache-2.0</span> — verify current license in repo before production use.
+apache-2.0 — use freely.

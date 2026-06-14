@@ -5,6 +5,7 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
+    "./d1": "./src/d1.ts",
     "./schema": "./src/schema.ts"
   },
   "scripts": {
@@ -14,6 +15,7 @@
   },
   "dependencies": {
     "@libsql/client": "^0.14.0",
+    "@opennextjs/cloudflare": "^1.19.11",
     "drizzle-orm": "^0.39.3"
   },
   "devDependencies": {

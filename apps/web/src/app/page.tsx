@@ -1,5 +1,6 @@
 import { Button } from "@ftod/ui";
 import Link from "next/link";
+import { NewsletterSignup } from "@/components/newsletter-signup";
 import { PageShell } from "@/components/page-shell";
 import { ProjectCard } from "@/components/project-card";
 import { CATEGORIES, getStaffPicks } from "@/lib/catalog";
@@ -62,6 +63,18 @@ export default function HomePage() {
             <ProjectCard key={p.slug} project={p} />
           ))}
         </div>
+      </section>
+
+      <section
+        style={{
+          marginBottom: 56,
+          padding: 28,
+          borderRadius: "var(--radius-lg)",
+          border: "1px solid var(--border-default)",
+          background: "var(--bg-surface)",
+        }}
+      >
+        <NewsletterSignup />
       </section>
 
       <section

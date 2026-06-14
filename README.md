@@ -25,6 +25,20 @@ open http://localhost:3000
 
 copy `.env.example` to `apps/web/.env.local` and fill oauth secrets for auth.
 
+### deploy to cloudflare (when ready)
+
+1. create a d1 database and paste its id into `apps/web/wrangler.jsonc`
+2. set github repo variables: `CLOUDFLARE_DEPLOY_ENABLED=true`, `BETTER_AUTH_URL`, `NEXT_PUBLIC_SITE_URL`
+3. set github secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `BETTER_AUTH_SECRET`
+4. push to `main` — the deploy workflow runs `pnpm --filter @ftod/web build:cloudflare` then `wrangler deploy`
+
+local preview on workers runtime:
+
+```bash
+pnpm --filter @ftod/web build:cloudflare
+pnpm --filter @ftod/web preview:cloudflare
+```
+
 ---
 
 ## monorepo
@@ -63,6 +77,7 @@ built entirely on open source:
 - next.js — app framework
 - cloudflare — hosting (pages + d1)
 - pagefind — search
+- listmonk — newsletter (self-hosted, env-gated)
 - lucide + geist — icons & typography
 
 ---

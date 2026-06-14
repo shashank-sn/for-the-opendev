@@ -13,20 +13,20 @@ lastVerified: 2026-06-14
 
 ## verdict
 
-listmonk is on the launch 100 catalog. editorial deep-dive coming soon — metadata verified against github.
+listmonk is the self-hosted mailchimp replacement indie newsletters actually run. postgres-backed lists, campaigns, and a public subscribe api we proxy from fortheopen.dev.
 
 ## who it's for
 
-builders evaluating alternatives to mailchimp.
+builders who want newsletter ownership without convertkit pricing or mailchimp surveillance.
 
 ## skip if
 
-maintenance, license, or setup complexity doesn't match your timeline — check github activity before committing.
+you need advanced marketing automation, crm sync, or zero ops — hosted email saas may win on time.
 
 ## install path
 
-see the official readme on github. difficulty 2/5 for a solo dev.
+docker compose with postgres, create a public list, copy the list uuid into `LISTMONK_LIST_UUID`, wire smtp.
 
 ## commercial use
 
-<span class="preserve-case">AGPL-3.0</span> — verify current license in repo before production use.
+agpl — understand copyleft before offering listmonk as a multi-tenant hosted service.

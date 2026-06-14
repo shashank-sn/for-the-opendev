@@ -463,6 +463,728 @@ run github/github-mcp-server with a fine-scoped pat or github app credentials in
 ## commercial use
 
 mit — follow github's terms for api access and token storage.`,
+  umami: `## verdict
+
+umami is the lightweight analytics layer we wire on fortheopen.dev when self-hosting matters. pageviews, referrers, and events without the google tag manager tax.
+
+## who it's for
+
+indie sites that need honest traffic numbers with minimal js payload and optional self-host.
+
+## skip if
+
+you need session replay, feature flags, or product analytics depth — posthog is the heavier path.
+
+## install path
+
+docker compose or coolify. add the tracking script, verify realtime in the dashboard.
+
+## commercial use
+
+mit — use freely.`,
+  pocketbase: `## verdict
+
+pocketbase is firebase-in-a-single-binary for solo builders. auth, sqlite, realtime, and admin ui without a platform bill.
+
+## who it's for
+
+hackathon-to-mvp teams who want a backend tonight, not a platform committee next quarter.
+
+## skip if
+
+you need postgres scale, row-level security depth, or multi-region from day one — supabase may fit better.
+
+## install path
+
+download the binary or docker image, create collections in the admin ui, ship your first api call.
+
+## commercial use
+
+mit — embedding pocketbase as a hosted product has separate considerations; read the license faq.`,
+  listmonk: `## verdict
+
+listmonk is the self-hosted mailchimp replacement indie newsletters actually run. postgres-backed lists, campaigns, and a public subscribe api we proxy from fortheopen.dev.
+
+## who it's for
+
+builders who want newsletter ownership without convertkit pricing or mailchimp surveillance.
+
+## skip if
+
+you need advanced marketing automation, crm sync, or zero ops — hosted email saas may win on time.
+
+## install path
+
+docker compose with postgres, create a public list, copy the list uuid into \`LISTMONK_LIST_UUID\`, wire smtp.
+
+## commercial use
+
+agpl — understand copyleft before offering listmonk as a multi-tenant hosted service.`,
+  penpot: `## verdict
+
+penpot is the open-source figma alternative that keeps design files on infrastructure you control. real-time collaboration without proprietary lock-in.
+
+## who it's for
+
+indie teams and creators who want ui design tooling without per-seat saas rent.
+
+## skip if
+
+your team is fully committed to figma plugins and enterprise design ops — migration cost is real.
+
+## install path
+
+self-host via docker or use penpot cloud. import svg assets, invite collaborators, export dev-ready specs.
+
+## commercial use
+
+mpl-2.0 — standard weak copyleft for the platform.`,
+  vaultwarden: `## verdict
+
+vaultwarden is the lean bitwarden-compatible server homelabers run for family password vaults. same clients, fraction of the official server footprint.
+
+## who it's for
+
+builders who want password manager self-host without running full bitwarden enterprise infrastructure.
+
+## skip if
+
+you need official bitwarden enterprise support contracts — this is a community implementation.
+
+## install path
+
+docker on a trusted vps or nas. configure clients with your domain, enable 2fa, test mobile sync.
+
+## commercial use
+
+agpl — do not offer as a commercial password service without license review.`,
+  langchain: `## verdict
+
+langchain is the default oss toolkit when you're wiring llm chains, tools, and agents — ecosystem breadth over minimal api surface.
+
+## who it's for
+
+teams prototyping rag, tool-calling agents, and multi-step workflows who want batteries-included integrations.
+
+## skip if
+
+you want the thinnest possible abstraction over raw openai-compatible apis — litellm plus custom code may be cleaner.
+
+## install path
+
+\`pip install langchain\`, pick your model provider, compose a chain, log traces with langfuse.
+
+## commercial use
+
+mit — check dependency licenses in your specific integration graph.`,
+  litellm: `## verdict
+
+litellm is the universal adapter for llm apis — one interface, many providers, sane routing and cost tracking for indie ai products.
+
+## who it's for
+
+builders who want to swap models without rewriting client code or leaking api keys across services.
+
+## skip if
+
+you call a single local ollama endpoint only — direct sdk may be enough.
+
+## install path
+
+run the proxy container or python package, configure provider keys, point open-webui or your app at the gateway.
+
+## commercial use
+
+mit — review enterprise features if you resell inference routing.`,
+  langfuse: `## verdict
+
+langfuse is the open-source langsmith alternative for tracing llm calls. see prompts, latencies, and costs without sending observability to a closed vendor.
+
+## who it's for
+
+teams shipping ai features who need debuggable traces and eval hooks on infrastructure they control.
+
+## skip if
+
+you are pre-product with a single script — logging to stdout is fine until pain appears.
+
+## install path
+
+docker compose, add the sdk to your app, verify traces in the ui after first completion.
+
+## commercial use
+
+mit core — check ee boundaries for enterprise-only modules.`,
+  fzf: `## verdict
+
+fzf is fuzzy finding for your terminal — files, history, git branches, anything piped through it. once installed, ctrl-r feels broken without it.
+
+## who it's for
+
+every developer who navigates repos and shell history daily.
+
+## skip if
+
+never — it's a ten-minute install that pays back forever.
+
+## install path
+
+package manager install, bind to shell hooks, start with \`fzf\` in repo root.
+
+## commercial use
+
+mit — use freely.`,
+  atuin: `## verdict
+
+atuin is shell history that syncs, searches, and survives machine hops. structured metadata beats scrolling plain bash history.
+
+## who it's for
+
+devs on multiple machines who lose context in unstructured ctrl-r sessions.
+
+## skip if
+
+you refuse any shell hook that touches history — privacy-sensitive air-gapped environments may prefer local-only tools.
+
+## install path
+
+install atuin, run initial sync setup, replace default history search keybinding.
+
+## commercial use
+
+mit — self-host sync server if you want full data control.`,
+  starship: `## verdict
+
+starship is the fast, configurable prompt that makes every terminal feel intentional. git branch, node version, and cwd without slow shell themes.
+
+## who it's for
+
+anyone who lives in the terminal and wants informative prompts with near-zero lag.
+
+## skip if
+
+you have a heavily customized powerlevel10k setup you're happy with — switching is taste, not necessity.
+
+## install path
+
+install binary, add one line to shell rc, tweak \`starship.toml\` once.
+
+## commercial use
+
+isc — permissive.`,
+  zoxide: `## verdict
+
+zoxide is smarter cd — jump to directories you've actually visited. \`z dev\` beats typing full paths after day two.
+
+## who it's for
+
+developers with deep monorepos and many project folders across the filesystem.
+
+## skip if
+
+you use IDE-only navigation and rarely cd — low value.
+
+## install path
+
+install zoxide, hook into shell, train muscle memory for \`z <fragment>\`.
+
+## commercial use
+
+mit — use freely.`,
+  lazygit: `## verdict
+
+lazygit is the git tui that makes staging, rebasing, and fixups feel fast instead of frightening. terminal-native ui for real git workflows.
+
+## who it's for
+
+devs who know git but want visual staging and branch management without leaving the terminal.
+
+## skip if
+
+you are a magit maximalist on emacs — you already have your tui.
+
+## install path
+
+brew install lazygit, run inside any repo, map to a shell alias.
+
+## commercial use
+
+mit — use freely.`,
+  "opensource-guide": `## verdict
+
+opensource guide is github's canonical onboarding for new contributors — licenses, community, and maintenance expectations in one readable site.
+
+## who it's for
+
+first-time oss contributors and maintainers writing contributor docs that do not reinvent basics.
+
+## skip if
+
+you need legal advice — this is education, not counsel.
+
+## install path
+
+read opensource.guide, link it from your repo contributing section, send new contributors there first.
+
+## commercial use
+
+cc-by — attribute when republishing.`,
+  "choose-a-license": `## verdict
+
+choose a license is the fastest way to pick a sane default license for your repo. mit, apache, gpl — explained for humans, not lawyers only.
+
+## who it's for
+
+indie devs open-sourcing a side project this weekend who need a defensible license choice in ten minutes.
+
+## skip if
+
+you have complex dual-licensing or enterprise redistribution needs — get real legal review.
+
+## install path
+
+visit choosealicense.com, pick mit unless you have a copyleft reason, commit LICENSE.
+
+## commercial use
+
+mit site code — license recommendations are guidance.`,
+  "standard-readme": `## verdict
+
+standard readme is the spec for readme structure that helps strangers understand your repo in one scroll. badges, install, usage, license — predictable.
+
+## who it's for
+
+maintainers who want their github landing page to answer "what is this?" without a wiki.
+
+## skip if
+
+your repo is a library with generated docs site that replaces the readme entirely.
+
+## install path
+
+copy the spec outline, fill sections honestly, link from fortheopen.dev profile to a readme that matches.
+
+## commercial use
+
+cc0 spec text — use freely.`,
+  documenso: `## verdict
+
+documenso is the open-source docusign alternative for indie contracts — esign flows without per-envelope saas pricing.
+
+## who it's for
+
+small agencies and saas founders sending founder agreements, sow, and onboarding docs.
+
+## skip if
+
+you need enterprise id verification and global legal compliance packages on day one.
+
+## install path
+
+self-host or use hosted offering, upload pdf template, send first signature request.
+
+## commercial use
+
+agpl — review obligations before embedding in a commercial document platform.`,
+  activepieces: `## verdict
+
+activepieces is the friendlier self-hosted zapier alternative — visual automations with a growing piece library and reasonable ops overhead.
+
+## who it's for
+
+indie operators wiring saas webhooks who want automation without n8n-scale complexity.
+
+## skip if
+
+you need the deepest enterprise integration catalog — n8n may have more connectors today.
+
+## install path
+
+docker deploy, connect first trigger, ship a two-step workflow, monitor runs.
+
+## commercial use
+
+mit core — verify ee pieces if you depend on commercial-only connectors.`,
+  windmill: `## verdict
+
+windmill is the developer-centric automation and internal tool platform — scripts, flows, and apps with git sync and serious permissioning.
+
+## who it's for
+
+teams replacing retool plus zapier with one self-hosted control plane.
+
+## skip if
+
+you want the simplest if-this-then-that ui for non-technical users only — activepieces may be lighter.
+
+## install path
+
+helm or docker deploy, write a small python or typescript script, schedule it, invite the team.
+
+## commercial use
+
+agpl — understand copyleft for hosted automation products.`,
+  hoppscotch: `## verdict
+
+hoppscotch is the browser-native api client for quick requests without installing electron bloat. collections, environments, and shareable workspaces.
+
+## who it's for
+
+frontend devs and indie builders testing apis from the browser or self-hosted instance.
+
+## skip if
+
+you want git-native collections in-repo — bruno fits that workflow better.
+
+## install path
+
+use hoppscotch.io for solo work or self-host for team persistence. import openapi, save environments.
+
+## commercial use
+
+mit — use freely.`,
+  sveltekit: `## verdict
+
+sveltekit is the full-stack svelte framework for apps that should feel fast by default. less client js, file-based routing, adapters for every host.
+
+## who it's for
+
+builders who love svelte ergonomics and want one framework from landing page to api routes.
+
+## skip if
+
+your team is standardized on react — context switching cost may outweigh svelte benefits.
+
+## install path
+
+\`pnpm create svelte\`, pick skeleton project, deploy with node or static adapter.
+
+## commercial use
+
+mit — use freely.`,
+  prisma: `## verdict
+
+prisma is the schema-first orm typescript teams reach for first. migrations, type-safe client, and studio for quick data peeks.
+
+## who it's for
+
+indie saas teams who want productive postgres/mysql access without writing raw sql daily.
+
+## skip if
+
+you need edge-runtime sqlite with minimal bundle — drizzle may fit cloudflare workers better.
+
+## install path
+
+\`pnpm add prisma\`, define schema, migrate, generate client, ship crud.
+
+## commercial use
+
+apache-2.0 — use freely.`,
+  drizzle: `## verdict
+
+drizzle is the sql-forward orm we run on fortheopen.dev with better-auth. thin abstraction, great typescript inference, sqlite and postgres without codegen ceremony.
+
+## who it's for
+
+builders who want to read the sql their app emits and keep bundles small on edge runtimes.
+
+## skip if
+
+you want a gui-first schema designer for non-technical teammates — prisma studio wins there.
+
+## install path
+
+\`pnpm add drizzle-orm\`, define tables, run migrations, wire \`getDb()\` singleton.
+
+## commercial use
+
+apache-2.0 — use freely.`,
+  librechat: `## verdict
+
+librechat is the multi-provider chat ui with plugins and agents — heavier than open-webui, stronger when you need extensibility and role-based access.
+
+## who it's for
+
+teams self-hosting chat for mixed openai, anthropic, and local models with admin controls.
+
+## skip if
+
+you want the fastest ollama-only ui — open-webui is simpler to stand up.
+
+## install path
+
+docker compose with env for providers, create users, enable plugins incrementally.
+
+## commercial use
+
+mit — verify plugin licenses individually.`,
+  vllm: `## verdict
+
+vllm is production llm serving when ollama is not enough — throughput, batching, and openai-compatible endpoints on real gpus.
+
+## who it's for
+
+teams moving from local prototyping to serving open models for multiple users or services.
+
+## skip if
+
+you are on a laptop experimenting — ollama first, vllm when gpu infra exists.
+
+## install path
+
+gpu host, install vllm, load model weights, point litellm or your app at the openai-compatible port.
+
+## commercial use
+
+apache-2.0 — model weights carry separate licenses.`,
+  signoz: `## verdict
+
+signoz is the oss datadog-shaped observability stack — traces, metrics, and logs in one ui when you self-host.
+
+## who it's for
+
+indie saas teams replacing expensive apm bills with infrastructure they control.
+
+## skip if
+
+you only need uptime pings — uptime kuma is lighter. you have zero ops capacity — managed apm may be cheaper in time.
+
+## install path
+
+docker compose or kubernetes helm, instrument app with opentelemetry, verify first trace.
+
+## commercial use
+
+mit core — check ee modules for enterprise-only features.`,
+  grafana: `## verdict
+
+grafana is the dashboard layer for metrics you already collect — prometheus, loki, tempo, or cloud datasources in one polished ui.
+
+## who it's for
+
+teams with metrics pipelines who need visualization and alerting without datadog pricing.
+
+## skip if
+
+you need full apm out of the box — pair with signoz or similar, grafana is often the visualization cap.
+
+## install path
+
+docker grafana, add datasource, import community dashboard, set alert channel.
+
+## commercial use
+
+agpl — grafana labs offers commercial licensing for embedded use cases.`,
+  "uptime-kuma": `## verdict
+
+uptime kuma is the pingdom replacement homelabers deploy in one docker container. http(s), tcp, and notification channels with a friendly ui.
+
+## who it's for
+
+anyone running side projects who wants downtime alerts without a saas monitor bill.
+
+## skip if
+
+you need enterprise synthetic monitoring globally distributed — managed status services still win at scale.
+
+## install path
+
+docker run, add monitors for your domains, wire discord or email notifications.
+
+## commercial use
+
+mit — use freely.`,
+  infisical: `## verdict
+
+infisical is the open-source secrets manager indie teams use instead of doppler or 1password secrets automation. env sync, rotation hooks, and rbac.
+
+## who it's for
+
+small teams centralizing api keys across github actions, vercel, and local dev without spreadsheet chaos.
+
+## skip if
+
+you are solo with a single \`.env\` file — complexity may not earn its keep yet.
+
+## install path
+
+self-host or cloud, create project, inject secrets into ci and dev machines, rotate one key to prove flow.
+
+## commercial use
+
+mit — enterprise features may be separately licensed.`,
+  outline: `## verdict
+
+outline is the notion-shaped team wiki that self-hosts well. real-time docs, permissions, and search for teams who outgrew markdown in a repo.
+
+## who it's for
+
+indie teams needing an internal knowledge base without notion's per-seat pricing or data residency concerns.
+
+## skip if
+
+you are solo and happy with obsidian or repo docs — outline is team infrastructure.
+
+## install path
+
+docker with postgres and redis, configure sso optional, migrate first handbook pages.
+
+## commercial use
+
+apache-2.0 — b2b hosted wiki businesses exist; verify trademark/branding.`,
+  "qwen-3": `## verdict
+
+qwen 3 is alibaba's open-weight family with strong multilingual and coding performance — a credible local model line when api costs bite.
+
+## who it's for
+
+builders running open models via ollama or vllm who want apache-licensed weights with active community finetunes.
+
+## skip if
+
+you need the simplest us-hosted api — closed providers still win on friction.
+
+## install path
+
+pull weights for your hardware budget, benchmark on your eval set, route through litellm.
+
+## commercial use
+
+apache-2.0 — verify model card for specific checkpoint terms.`,
+  "phi-4": `## verdict
+
+phi-4 is microsoft's small open model line optimized for reasoning-per-dollar on modest hardware. good for edge and laptop inference experiments.
+
+## who it's for
+
+indie devs prototyping agents on consumer gpus who need better quality than tiny legacy models.
+
+## skip if
+
+you need frontier multimodal — larger open models or closed apis are the next step.
+
+## install path
+
+download from official release, serve with ollama or onnx runtime, test coding prompts.
+
+## commercial use
+
+mit — check per-model license files.`,
+  "whisper-v3": `## verdict
+
+whisper large v3 is the open speech-to-text baseline — robust enough for transcription pipelines without closed stt apis.
+
+## who it's for
+
+builders adding captions, meeting notes, or voice interfaces who can batch gpu inference.
+
+## skip if
+
+you need real-time phone-call latency on cpu only — hosted stt may be simpler.
+
+## install path
+
+install faster-whisper or official inference, test on representative audio, wire to your pipeline.
+
+## commercial use
+
+mit — use freely.`,
+  "nomic-embed-v2": `## verdict
+
+nomic-embed v2 is a strong open embedding model for rag stacks — competitive retrieval quality without closed embedding apis.
+
+## who it's for
+
+teams building local-first search over docs and repos with pgvector or sqlite extensions.
+
+## skip if
+
+you are already standardized on one cloud embedding model with volume discounts.
+
+## install path
+
+pull model via sentence-transformers or ollama embeddings, index a sample corpus, measure recall.
+
+## commercial use
+
+apache-2.0 — verify upstream model card.`,
+  "bge-m3": `## verdict
+
+bge-m3 is the multilingual embedding workhorse from the flagembedding ecosystem — dense retrieval across languages without vendor lock-in.
+
+## who it's for
+
+rag pipelines serving international users or mixed-language knowledge bases.
+
+## skip if
+
+english-only tiny corpora may be fine with smaller embed models — benchmark before upsizing.
+
+## install path
+
+load via huggingface stack, chunk documents, store vectors, evaluate mrr on held-out queries.
+
+## commercial use
+
+mit — verify checkpoint-specific terms.`,
+  "mcp-playwright": `## verdict
+
+playwright mcp gives agents real browser automation — navigate, click, and extract without hand-rolled puppeteer scripts per workflow.
+
+## who it's for
+
+builders shipping ai QA, scraping, and testing agents who already trust playwright semantics.
+
+## skip if
+
+you only need static http fetches — simpler tools suffice.
+
+## install path
+
+add microsoft/playwright-mcp to mcp config, scope allowed origins, test on a staging url.
+
+## commercial use
+
+apache-2.0 — follow playwright licensing for bundled browsers.`,
+  "mcp-postgres": `## verdict
+
+postgres mcp exposes read-only sql to agents with explicit connection strings — safer than handing bash plus psql to a model.
+
+## who it's for
+
+internal tools where agents query analytics replicas or staging databases with guardrails.
+
+## skip if
+
+production write access should never touch an agent — keep humans in the loop for mutations.
+
+## install path
+
+configure read-only db user, add server from modelcontextprotocol/servers, test simple selects.
+
+## commercial use
+
+mit — database credentials remain your responsibility.`,
+  "flux-1": `## verdict
+
+flux.1 dev is the open image generation checkpoint indie builders experiment with before paying midjourney rent. strong aesthetics when you have gpu time.
+
+## who it's for
+
+creators prototyping marketing assets and ui mock imagery on self-hosted inference.
+
+## skip if
+
+you need commercial-safe generated faces at scale without legal review — stock assets may be safer.
+
+## install path
+
+comfyui or diffusers pipeline, download dev weights, generate test prompts, establish content policy.
+
+## commercial use
+
+apache-2.0 weights — read black forest labs license for production redistribution.`,
 };
 
 function projectMdx(project) {

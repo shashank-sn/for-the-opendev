@@ -18,10 +18,17 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - run: pnpm db:init
       - run: pnpm content:generate
-      - run: pnpm build
-      - name: deploy to cloudflare pages
+      - name: build for cloudflare workers
+        run: pnpm --filter @ftod/web build:cloudflare
+        env:
+          FTOD_DB_DRIVER: d1
+          BETTER_AUTH_URL: ${{ vars.BETTER_AUTH_URL }}
+          BETTER_AUTH_SECRET: ${{ secrets.BETTER_AUTH_SECRET }}
+          NEXT_PUBLIC_SITE_URL: ${{ vars.NEXT_PUBLIC_SITE_URL }}
+      - name: deploy to cloudflare workers
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy apps/web/.next --project-name=fortheopen-dev
+          workingDirectory: apps/web
+          command: wrangler deploy

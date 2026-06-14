@@ -9,5 +9,3 @@ export function getAuth() {
   }
   return globalForAuth.auth;
 }
-
-export const auth = getAuth();

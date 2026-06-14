@@ -1,3 +1,5 @@
+export const dynamic = "force-dynamic";
+
 import { notFound } from "next/navigation";
 import { PageShell } from "@/components/page-shell";
 import { ProjectCard } from "@/components/project-card";

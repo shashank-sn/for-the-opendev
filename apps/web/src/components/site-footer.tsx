@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { NewsletterSignup } from "@/components/newsletter-signup";
 import { SPONSOR_URLS } from "@/lib/sponsors";
 
 export function SiteFooter() {
@@ -30,6 +31,9 @@ export function SiteFooter() {
               <a href={SPONSOR_URLS.sustainer}>sustainer · $100/mo</a>
               <Link href="/supporters">all tiers</Link>
             </div>
+          </div>
+          <div>
+            <NewsletterSignup compact />
           </div>
           <div>
             <p style={{ margin: "0 0 12px", color: "var(--text-tertiary)", fontSize: 13 }}>oss</p>

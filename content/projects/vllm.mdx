@@ -13,20 +13,20 @@ lastVerified: 2026-06-14
 
 ## verdict
 
-vllm is on the launch 100 catalog. editorial deep-dive coming soon — metadata verified against github.
+vllm is production llm serving when ollama is not enough — throughput, batching, and openai-compatible endpoints on real gpus.
 
 ## who it's for
 
-builders evaluating alternatives to openai api (serving).
+teams moving from local prototyping to serving open models for multiple users or services.
 
 ## skip if
 
-maintenance, license, or setup complexity doesn't match your timeline — check github activity before committing.
+you are on a laptop experimenting — ollama first, vllm when gpu infra exists.
 
 ## install path
 
-see the official readme on github. difficulty 4/5 for a solo dev.
+gpu host, install vllm, load model weights, point litellm or your app at the openai-compatible port.
 
 ## commercial use
 
-<span class="preserve-case">Apache-2.0</span> — verify current license in repo before production use.
+apache-2.0 — model weights carry separate licenses.

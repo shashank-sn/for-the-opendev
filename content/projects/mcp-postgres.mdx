@@ -13,20 +13,20 @@ lastVerified: 2026-06-14
 
 ## verdict
 
-postgres is on the launch 100 catalog. editorial deep-dive coming soon — metadata verified against github.
+postgres mcp exposes read-only sql to agents with explicit connection strings — safer than handing bash plus psql to a model.
 
 ## who it's for
 
-builders evaluating oss options in mcps.
+internal tools where agents query analytics replicas or staging databases with guardrails.
 
 ## skip if
 
-maintenance, license, or setup complexity doesn't match your timeline — check github activity before committing.
+production write access should never touch an agent — keep humans in the loop for mutations.
 
 ## install path
 
-see the official readme on github. difficulty 2/5 for a solo dev.
+configure read-only db user, add server from modelcontextprotocol/servers, test simple selects.
 
 ## commercial use
 
-<span class="preserve-case">MIT</span> — verify current license in repo before production use.
+mit — database credentials remain your responsibility.
