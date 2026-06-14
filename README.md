@@ -4,68 +4,39 @@
 [![sponsor](https://img.shields.io/badge/sponsor-$1%2Fmo-ea4aaa?logo=github-sponsors&logoColor=white)](https://github.com/sponsors/shashank-sn)
 [![website](https://img.shields.io/badge/website-fortheopen.dev-indigo)](https://fortheopen.dev)
 
-discover open source worth your time.
+**discover open source worth your time.**
 
 → [fortheopen.dev](https://fortheopen.dev)
 
-a trusted layer for discovering and building with open source — curated profiles, honest verdicts, comparisons, and badges. not another directory.
+for the open dev is a curated discovery layer for solo and indie builders — not another directory. every profile gets an honest verdict, a difficulty rating, and a clear answer to who it's for and when to skip it.
 
 ---
 
-## quick start
+## what you get
 
-```bash
-pnpm install
-pnpm db:init
-pnpm content:generate
-pnpm dev
-```
+- **100 launch profiles** across tools, frameworks, models, clis, mcps, datasets, and resources
+- **staff picks** with full editorial depth — verdict, install path, commercial use notes
+- **20 comparisons** — self-hosted analytics, firebase alternatives, local llms, and more
+- **8 collections** — indie saas infra, local ai stack, homelab essentials, terminal productivity
+- **community layer** — lists, structured reviews, project submissions, launch votes
+- **search** — pagefind-powered, no external index
 
-open http://localhost:3000
-
-copy `.env.example` to `apps/web/.env.local` and fill oauth secrets for auth.
-
-### deploy to cloudflare (when ready)
-
-1. create a d1 database and paste its id into `apps/web/wrangler.jsonc`
-2. set github repo variables: `CLOUDFLARE_DEPLOY_ENABLED=true`, `BETTER_AUTH_URL`, `NEXT_PUBLIC_SITE_URL`
-3. set github secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `BETTER_AUTH_SECRET`
-4. push to `main` — the deploy workflow runs `pnpm --filter @ftod/web build:cloudflare` then `wrangler deploy`
-
-local preview on workers runtime:
-
-```bash
-pnpm --filter @ftod/web build:cloudflare
-pnpm --filter @ftod/web preview:cloudflare
-```
-
----
-
-## monorepo
-
-```
-for-the-opendev/
-├── apps/web/           # next.js site
-├── packages/
-│   ├── auth/           # better-auth config
-│   ├── db/             # drizzle schema + d1 migrations
-│   └── ui/             # shared components + design tokens
-├── content/            # mdx profiles, comparisons, collections
-└── scripts/            # content generation
-```
+editorial content is cc-by-4.0. rankings are never paid. sponsored placements are always labeled.
 
 ---
 
 ## sponsor
 
-core discovery is free forever. support the mission on github:
+discovery stays free. sponsorship keeps it independent.
 
-| tier | price | link |
-|------|-------|------|
-| open supporter | $1/mo | [sponsor](https://github.com/sponsors/shashank-sn/sponsorships?sponsor=open-supporter) |
-| builder backer | $5/mo | [sponsor](https://github.com/sponsors/shashank-sn/sponsorships?sponsor=builder-backer) |
-| open source sustainer | $100/mo | [sponsor](https://github.com/sponsors/shashank-sn/sponsorships?sponsor=sustainer) |
-| custom amount | you choose | [sponsor](https://github.com/sponsors/shashank-sn) |
+| tier | price | |
+|------|-------|---|
+| open supporter | $1/mo | [sponsor →](https://github.com/sponsors/shashank-sn/sponsorships?sponsor=open-supporter) |
+| builder backer | $5/mo | [sponsor →](https://github.com/sponsors/shashank-sn/sponsorships?sponsor=builder-backer) |
+| open source sustainer | $100/mo | [sponsor →](https://github.com/sponsors/shashank-sn/sponsorships?sponsor=sustainer) |
+| custom amount | you choose | [sponsor →](https://github.com/sponsors/shashank-sn) |
+
+[see all tiers on /supporters](https://fortheopen.dev/supporters)
 
 ---
 
@@ -73,21 +44,21 @@ core discovery is free forever. support the mission on github:
 
 built entirely on open source:
 
-- [better-auth](https://better-auth.com) — authentication
-- next.js — app framework
-- cloudflare — hosting (pages + d1)
-- pagefind — search
-- listmonk — newsletter (self-hosted, env-gated)
-- lucide + geist — icons & typography
+- [better-auth](https://better-auth.com) — auth
+- [next.js](https://nextjs.org) — app
+- [cloudflare workers](https://workers.cloudflare.com) + d1 — hosting & database
+- [pagefind](https://pagefind.app) — search
+- [listmonk](https://listmonk.app) — newsletter (self-hosted)
+- lucide + geist — icons & type
 
 ---
 
 ## contributing
 
-contributions welcome. see [CONTRIBUTING.md](CONTRIBUTING.md).
+profiles, comparisons, code, and bug reports are welcome. see [CONTRIBUTING.md](CONTRIBUTING.md) for setup and pr guidelines.
 
 ---
 
 ## license
 
-MIT — see [LICENSE](LICENSE). editorial content in `/content` is CC-BY-4.0.
+MIT — see [LICENSE](LICENSE). editorial content in `/content` is [CC-BY-4.0](https://creativecommons.org/licenses/by/4.0/).
