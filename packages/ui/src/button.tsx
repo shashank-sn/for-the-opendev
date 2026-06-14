@@ -55,11 +55,11 @@ export function Button(props: ButtonAsButton | ButtonAsLink) {
 
   if ("href" in props && props.href) {
     const { href, ...anchorProps } = props;
+    const isExternal = href.startsWith("http");
     return (
       <a
         href={href}
-        target="_blank"
-        rel="noopener noreferrer"
+        {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
         {...anchorProps}
         style={sharedStyle}
       >

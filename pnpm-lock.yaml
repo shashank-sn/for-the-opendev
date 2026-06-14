@@ -35,6 +35,9 @@ importers:
         specifier: ^9.0.3
         version: 9.1.0(@types/react@19.2.17)(react@19.2.7)
     devDependencies:
+      '@eslint/eslintrc':
+        specifier: ^3.3.5
+        version: 3.3.5
       '@types/node':
         specifier: ^22.10.7
         version: 22.19.21
@@ -113,6 +116,9 @@ importers:
       '@types/react':
         specifier: ^19.0.8
         version: 19.2.17
+      next:
+        specifier: ^15.1.6
+        version: 15.5.19(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
@@ -3198,6 +3204,7 @@ packages:
 
   libsql@0.4.7:
     resolution: {integrity: sha512-T9eIRCs6b0J1SHKYIvD8+KCJMcWZ900iZyxdnSCdqxN12Z1ijzT+jY5nrk72Jw4B0HGzms2NgpryArlJqvc3Lw==}
+    cpu: [x64, arm64, wasm32]
     os: [darwin, linux, win32]
 
   locate-path@6.0.0:

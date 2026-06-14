@@ -1,3 +1,4 @@
+import Link from "next/link";
 import type { CSSProperties, ReactNode } from "react";
 
 export function Card({
@@ -26,10 +27,18 @@ export function Card({
   );
 
   if (href) {
+    const isExternal = href.startsWith("http");
+    if (isExternal) {
+      return (
+        <a href={href} target="_blank" rel="noopener noreferrer" style={{ display: "block", color: "inherit", textDecoration: "none" }}>
+          {inner}
+        </a>
+      );
+    }
     return (
-      <a href={href} style={{ display: "block", color: "inherit", textDecoration: "none" }}>
+      <Link href={href} style={{ display: "block", color: "inherit", textDecoration: "none" }}>
         {inner}
-      </a>
+      </Link>
     );
   }
 

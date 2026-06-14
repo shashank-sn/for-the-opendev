@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { PageShell } from "@/components/page-shell";
-import { CATEGORIES, getProject } from "@/lib/catalog";
+import { CATEGORIES, PROJECTS, getProject } from "@/lib/catalog";
 import { getProjectContent } from "@/lib/content";
 import { jsonLdScript, projectJsonLd } from "@/lib/structured-data";
 
@@ -13,7 +13,6 @@ function verdictExcerpt(body: string) {
 }
 
 export async function generateStaticParams() {
-  const { PROJECTS } = await import("@/lib/catalog");
   return PROJECTS.map((p) => ({ category: p.category, slug: p.slug }));
 }
 
