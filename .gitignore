@@ -1,0 +1,15 @@
+node_modules
+.pnpm-store
+.next
+.open-next
+.wrangler
+.dev.vars
+.env
+.env.local
+.env.*.local
+dist
+*.tsbuildinfo
+.DS_Store
+pagefind
+.turbo
+coverage

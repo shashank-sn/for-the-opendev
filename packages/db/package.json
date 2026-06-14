@@ -1,0 +1,22 @@
+{
+  "name": "@ftod/db",
+  "version": "0.0.1",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts",
+    "./schema": "./src/schema.ts"
+  },
+  "scripts": {
+    "generate": "drizzle-kit generate",
+    "migrate": "drizzle-kit migrate",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.39.3"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.30.4",
+    "typescript": "^5.7.3"
+  }
+}

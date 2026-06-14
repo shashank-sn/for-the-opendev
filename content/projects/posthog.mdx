@@ -1,0 +1,32 @@
+---
+slug: posthog
+name: posthog
+category: tools
+tier: staff pick
+license: MIT
+github: https://github.com/PostHog/posthog
+replaces: mixpanel, amplitude
+difficulty: 3
+tags: ["replaces-saas"]
+lastVerified: 2026-06-14
+---
+
+## verdict
+
+posthog is the default answer when someone asks "what should i self-host for product analytics?" one oss stack for events, flags, session replay, and experiments.
+
+## who it's for
+
+teams replacing mixpanel or amplitude who want data on their own infrastructure.
+
+## skip if
+
+you only need a single lightweight pageview counter — plausible or umami may be simpler.
+
+## install path
+
+docker compose or coolify deploy. wire the snippet, verify events in the live feed.
+
+## commercial use
+
+mit core — check ee boundaries if you need enterprise-only modules.

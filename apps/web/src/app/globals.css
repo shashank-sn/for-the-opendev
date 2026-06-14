@@ -1,0 +1,25 @@
+:root {
+  --font-geist-sans: "Geist Sans", system-ui, sans-serif;
+  --font-geist-mono: "Geist Mono", ui-monospace, monospace;
+}
+
+.prose h2 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.prose p,
+.prose li {
+  color: var(--text-secondary);
+}
+
+.prose ul {
+  padding-left: 1.25rem;
+}
+
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
