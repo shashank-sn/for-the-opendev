@@ -17,6 +17,7 @@ export function SiteFooter() {
             <div style={{ display: "flex", flexDirection: "column", gap: 8, fontSize: 14 }}>
               <Link href="/comparisons">comparisons</Link>
               <Link href="/collections">collections</Link>
+              <Link href="/launches">launches</Link>
               <Link href="/submit">submit a project</Link>
               <Link href="/about">about</Link>
             </div>

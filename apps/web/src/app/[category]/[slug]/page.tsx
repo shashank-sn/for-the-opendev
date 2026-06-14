@@ -2,6 +2,7 @@ import { Badge } from "@ftod/ui";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
 import { AddToListButton } from "@/components/add-to-list-button";
+import { CommunityReviews } from "@/components/community-reviews";
 import { PageShell } from "@/components/page-shell";
 import { CATEGORIES, getProject } from "@/lib/catalog";
 import { getProjectContent } from "@/lib/content";
@@ -67,6 +68,8 @@ export default async function ProjectPage({
             embed badge
           </a>
         </div>
+
+        <CommunityReviews projectSlug={project.slug} />
       </article>
     </PageShell>
   );

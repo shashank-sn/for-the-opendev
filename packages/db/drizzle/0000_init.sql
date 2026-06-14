@@ -92,11 +92,17 @@ CREATE TABLE `reviews` (
   `id` text PRIMARY KEY NOT NULL,
   `user_id` text NOT NULL,
   `project_slug` text NOT NULL,
-  `rating` integer NOT NULL,
-  `body` text NOT NULL,
+  `setup_ease` integer NOT NULL,
+  `documentation` integer NOT NULL,
+  `maintenance` integer NOT NULL,
+  `would_recommend` text NOT NULL,
+  `body` text,
+  `hidden` integer DEFAULT false,
   `created_at` integer NOT NULL,
+  `updated_at` integer,
   FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
 );
+CREATE UNIQUE INDEX `reviews_user_project_unique` ON `reviews` (`user_id`, `project_slug`);
 
 CREATE TABLE `supporters` (
   `id` text PRIMARY KEY NOT NULL,

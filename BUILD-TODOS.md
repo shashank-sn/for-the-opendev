@@ -99,8 +99,8 @@ sponsors profile is live: https://github.com/sponsors/shashank-sn
 - [x] public shareable lists (`/u/[username]/[listSlug]` when public)
 - [x] project submission flow + github license verification (persisted to db)
 - [x] admin submission review queue (`/admin/submissions`, `ADMIN_EMAILS` gate)
-- [ ] structured community reviews
-- [ ] launch platform (votes + staff pick)
+- [x] structured community reviews (profile section + `/api/reviews`)
+- [x] launch platform (votes + staff pick — `/launches`, `/api/launches/vote`)
 - [x] embeddable project badges
 - [ ] newsletter via self-hosted listmonk (optional phase 3)
 

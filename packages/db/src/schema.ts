@@ -98,9 +98,14 @@ export const reviews = sqliteTable("reviews", {
     .notNull()
     .references(() => user.id),
   projectSlug: text("project_slug").notNull(),
-  rating: integer("rating").notNull(),
-  body: text("body").notNull(),
+  setupEase: integer("setup_ease").notNull(),
+  documentation: integer("documentation").notNull(),
+  maintenance: integer("maintenance").notNull(),
+  wouldRecommend: text("would_recommend").notNull(), // yes | maybe | no
+  body: text("body"),
+  hidden: integer("hidden", { mode: "boolean" }).default(false),
   createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+  updatedAt: integer("updated_at", { mode: "timestamp" }),
 });
 
 export const supporters = sqliteTable("supporters", {
