@@ -28,7 +28,8 @@ jobs:
       - run: pnpm content:generate
       - run: pnpm build
         env:
-          NEXT_PUBLIC_SITE_URL: https://fortheopen.dev
+          NEXT_PUBLIC_BASE_PATH: /for-the-opendev
+          NEXT_PUBLIC_SITE_URL: https://shashank-sn.github.io/for-the-opendev
       - uses: actions/upload-pages-artifact@v3
         with:
           path: apps/web/out

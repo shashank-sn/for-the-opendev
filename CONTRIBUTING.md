@@ -38,7 +38,7 @@ the site is a **static export** deployed from `main` via `.github/workflows/page
 
 1. push to `main` — ci builds `apps/web/out` and deploy-pages publishes it
 2. in repo **settings → pages**, source should be **github actions**
-3. custom domain `fortheopen.dev` is set via `apps/web/public/CNAME` — point dns at github pages (see github docs)
+3. project site url: `https://shashank-sn.github.io/for-the-opendev/` (built with `NEXT_PUBLIC_BASE_PATH=/for-the-opendev`). for a root custom domain later, rebuild without base path and add `apps/web/public/CNAME`
 
 local preview after build:
 

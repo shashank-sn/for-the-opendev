@@ -8,6 +8,8 @@ declare global {
   }
 }
 
+const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
+
 export function PagefindSearch() {
   const initialized = useRef(false);
 
@@ -17,11 +19,11 @@ export function PagefindSearch() {
 
     const css = document.createElement("link");
     css.rel = "stylesheet";
-    css.href = "/pagefind/pagefind-ui.css";
+    css.href = `${basePath}/pagefind/pagefind-ui.css`;
     document.head.appendChild(css);
 
     const script = document.createElement("script");
-    script.src = "/pagefind/pagefind-ui.js";
+    script.src = `${basePath}/pagefind/pagefind-ui.js`;
     script.async = true;
     script.onload = () => {
       if (window.PagefindUI) {
