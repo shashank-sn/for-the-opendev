@@ -1,37 +1,57 @@
-CREATE TABLE `users` (
+CREATE TABLE `user` (
   `id` text PRIMARY KEY NOT NULL,
+  `name` text NOT NULL,
   `email` text NOT NULL,
-  `username` text,
-  `name` text,
-  `bio` text,
+  `email_verified` integer DEFAULT false NOT NULL,
   `image` text,
+  `created_at` integer NOT NULL,
+  `updated_at` integer NOT NULL,
+  `username` text,
+  `display_username` text,
+  `bio` text,
   `supporter_tier` text,
-  `is_founding_supporter` integer DEFAULT false,
-  `created_at` integer NOT NULL,
-  `updated_at` integer NOT NULL
+  `is_founding_supporter` integer DEFAULT false
 );
-CREATE UNIQUE INDEX `users_email_unique` ON `users` (`email`);
-CREATE UNIQUE INDEX `users_username_unique` ON `users` (`username`);
+CREATE UNIQUE INDEX `user_email_unique` ON `user` (`email`);
+CREATE UNIQUE INDEX `user_username_unique` ON `user` (`username`);
 
-CREATE TABLE `sessions` (
+CREATE TABLE `session` (
   `id` text PRIMARY KEY NOT NULL,
-  `user_id` text NOT NULL,
-  `token` text NOT NULL,
   `expires_at` integer NOT NULL,
+  `token` text NOT NULL,
   `created_at` integer NOT NULL,
-  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
-);
-CREATE UNIQUE INDEX `sessions_token_unique` ON `sessions` (`token`);
-
-CREATE TABLE `accounts` (
-  `id` text PRIMARY KEY NOT NULL,
+  `updated_at` integer NOT NULL,
+  `ip_address` text,
+  `user_agent` text,
   `user_id` text NOT NULL,
-  `provider` text NOT NULL,
-  `provider_account_id` text NOT NULL,
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
+);
+CREATE UNIQUE INDEX `session_token_unique` ON `session` (`token`);
+
+CREATE TABLE `account` (
+  `id` text PRIMARY KEY NOT NULL,
+  `account_id` text NOT NULL,
+  `provider_id` text NOT NULL,
+  `user_id` text NOT NULL,
   `access_token` text,
   `refresh_token` text,
+  `id_token` text,
+  `access_token_expires_at` integer,
+  `refresh_token_expires_at` integer,
+  `scope` text,
+  `password` text,
   `created_at` integer NOT NULL,
-  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
+  `updated_at` integer NOT NULL,
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
+);
+
+CREATE TABLE `verification` (
+  `id` text PRIMARY KEY NOT NULL,
+  `identifier` text NOT NULL,
+  `value` text NOT NULL,
+  `expires_at` integer NOT NULL,
+  `created_at` integer,
+  `updated_at` integer
 );
 
 CREATE TABLE `lists` (
@@ -43,9 +63,8 @@ CREATE TABLE `lists` (
   `is_public` integer DEFAULT false,
   `created_at` integer NOT NULL,
   `updated_at` integer NOT NULL,
-  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
 );
-CREATE UNIQUE INDEX `lists_slug_unique` ON `lists` (`slug`);
 
 CREATE TABLE `list_items` (
   `id` text PRIMARY KEY NOT NULL,
@@ -66,7 +85,7 @@ CREATE TABLE `submissions` (
   `notes` text,
   `created_at` integer NOT NULL,
   `reviewed_at` integer,
-  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
 );
 
 CREATE TABLE `reviews` (
@@ -76,7 +95,7 @@ CREATE TABLE `reviews` (
   `rating` integer NOT NULL,
   `body` text NOT NULL,
   `created_at` integer NOT NULL,
-  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
 );
 
 CREATE TABLE `supporters` (
@@ -94,5 +113,5 @@ CREATE TABLE `launch_votes` (
   `user_id` text NOT NULL,
   `project_slug` text NOT NULL,
   `created_at` integer NOT NULL,
-  FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
+  FOREIGN KEY (`user_id`) REFERENCES `user`(`id`)
 );

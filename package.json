@@ -8,11 +8,15 @@
     "lint": "pnpm -r lint",
     "db:generate": "pnpm --filter @ftod/db generate",
     "db:migrate": "pnpm --filter @ftod/db migrate",
+    "db:init": "node scripts/init-db.mjs",
     "content:generate": "node scripts/generate-content.mjs",
     "typecheck": "pnpm -r typecheck"
   },
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "pnpm@9.15.0"
+  "packageManager": "pnpm@9.15.0",
+  "devDependencies": {
+    "@libsql/client": "^0.14.0"
+  }
 }

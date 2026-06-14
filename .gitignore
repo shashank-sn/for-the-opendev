@@ -13,3 +13,4 @@ dist
 pagefind
 .turbo
 coverage
+.data

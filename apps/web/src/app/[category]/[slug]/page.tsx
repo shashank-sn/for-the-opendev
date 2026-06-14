@@ -1,6 +1,7 @@
 import { Badge } from "@ftod/ui";
 import { notFound } from "next/navigation";
 import ReactMarkdown from "react-markdown";
+import { AddToListButton } from "@/components/add-to-list-button";
 import { PageShell } from "@/components/page-shell";
 import { CATEGORIES, getProject } from "@/lib/catalog";
 import { getProjectContent } from "@/lib/content";
@@ -52,7 +53,8 @@ export default async function ProjectPage({
           <ReactMarkdown>{content?.body ?? "profile content loading..."}</ReactMarkdown>
         </div>
 
-        <div style={{ marginTop: 40, display: "flex", gap: 12, flexWrap: "wrap" }}>
+        <div style={{ marginTop: 40, display: "flex", gap: 12, flexWrap: "wrap", alignItems: "center" }}>
+          <AddToListButton projectSlug={project.slug} />
           <a
             href={`/api/badges/${project.slug}`}
             style={{

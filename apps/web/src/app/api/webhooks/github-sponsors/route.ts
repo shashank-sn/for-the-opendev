@@ -1,5 +1,8 @@
 import { createHmac, timingSafeEqual } from "node:crypto";
+import { getDb, supporters } from "@ftod/db";
+import { sql } from "drizzle-orm";
 import { NextResponse } from "next/server";
+import { createId } from "@/lib/ids";
 import { FOUNDING_SUPPORTER_LIMIT } from "@/lib/sponsors";
 
 type SponsorPayload = {
@@ -22,6 +25,15 @@ function verifySignature(raw: string, signature: string | null, secret: string) 
   }
 }
 
+function normalizeTier(name?: string) {
+  if (!name) return "custom";
+  const lower = name.toLowerCase();
+  if (lower.includes("open supporter") || lower.includes("open-supporter")) return "open-supporter";
+  if (lower.includes("builder backer") || lower.includes("builder-backer")) return "builder-backer";
+  if (lower.includes("sustainer")) return "sustainer";
+  return lower.replace(/\s+/g, "-");
+}
+
 export async function POST(request: Request) {
   const secret = process.env.GITHUB_SPONSORS_WEBHOOK_SECRET;
   const raw = await request.text();
@@ -33,22 +45,42 @@ export async function POST(request: Request) {
 
   const payload = JSON.parse(raw) as SponsorPayload;
   const login = payload.sponsorship?.sponsor?.login;
-  const tierName = payload.sponsorship?.tier?.name?.toLowerCase() ?? "custom";
+  const tierName = normalizeTier(payload.sponsorship?.tier?.name);
 
   if (!login) {
     return NextResponse.json({ ok: true, skipped: true });
   }
 
-  // persistence hooks into d1 when deployed — scaffold response for now
-  const foundingSlot = Math.floor(Math.random() * FOUNDING_SUPPORTER_LIMIT) < FOUNDING_SUPPORTER_LIMIT;
+  const db = getDb();
+  const now = new Date();
+
+  await db
+    .insert(supporters)
+    .values({
+      id: createId("sup"),
+      githubLogin: login,
+      tier: tierName,
+      amountCents: payload.sponsorship?.tier?.monthly_price_in_cents ?? null,
+      isEnterprise: tierName === "custom",
+      syncedAt: now,
+    })
+    .onConflictDoUpdate({
+      target: supporters.githubLogin,
+      set: {
+        tier: tierName,
+        amountCents: payload.sponsorship?.tier?.monthly_price_in_cents ?? null,
+        syncedAt: now,
+      },
+    });
+
+  const [{ count }] = await db.select({ count: sql<number>`count(*)` }).from(supporters);
 
   return NextResponse.json({
     ok: true,
     synced: {
       githubLogin: login,
       tier: tierName,
-      foundingSupporterEligible: foundingSlot,
-      message: "wire to d1 supporters table in production",
+      foundingSupporterEligible: Number(count) <= FOUNDING_SUPPORTER_LIMIT,
     },
   });
 }

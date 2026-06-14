@@ -1,4 +1,7 @@
+import { getDb, submissions } from "@ftod/db";
 import { NextResponse } from "next/server";
+import { createId } from "@/lib/ids";
+import { getServerSession } from "@/lib/session";
 
 const GITHUB_REPO_RE = /^https:\/\/github\.com\/[\w.-]+\/[\w.-]+\/?$/;
 
@@ -23,6 +26,9 @@ async function verifyGithubLicense(githubUrl: string) {
 }
 
 export async function POST(request: Request) {
+  const session = await getServerSession();
+  if (!session?.user) return NextResponse.json({ message: "log in to submit" }, { status: 401 });
+
   const body = (await request.json()) as {
     githubUrl?: string;
     category?: string;
@@ -38,14 +44,22 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: licenseCheck.reason }, { status: 400 });
   }
 
-  // queue persistence via d1 when auth + db wired in production
+  const row = {
+    id: createId("sub"),
+    userId: session.user.id,
+    githubUrl: body.githubUrl,
+    category: body.category ?? "tools",
+    license: licenseCheck.license,
+    status: "pending" as const,
+    notes: body.notes?.slice(0, 500) ?? null,
+    createdAt: new Date(),
+    reviewedAt: null,
+  };
+
+  await getDb().insert(submissions).values(row);
+
   return NextResponse.json({
     message: "submitted for editorial review",
-    submission: {
-      githubUrl: body.githubUrl,
-      category: body.category,
-      license: licenseCheck.license,
-      status: "pending",
-    },
+    submission: row,
   });
 }
