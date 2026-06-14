@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { syncSponsorsFromGitHub } from "@/lib/sponsor-sync";
 
 export async function GET(request: Request) {
   const authHeader = request.headers.get("authorization");
@@ -6,10 +7,11 @@ export async function GET(request: Request) {
     return NextResponse.json({ error: "unauthorized" }, { status: 401 });
   }
 
-  // fallback cron: poll github sponsors api when webhook unavailable
-  return NextResponse.json({
-    ok: true,
-    message: "cron fallback ready — connect github token + d1 in production",
-    syncedAt: new Date().toISOString(),
-  });
+  const result = await syncSponsorsFromGitHub();
+
+  if (!result.ok) {
+    return NextResponse.json(result, { status: 503 });
+  }
+
+  return NextResponse.json(result);
 }

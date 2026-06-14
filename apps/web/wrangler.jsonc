@@ -38,5 +38,8 @@
     "EMAIL_FROM_NAME": "for the open dev",
     "EMAIL_REPLY_TO": "hello@fortheopen.dev"
   },
+  "triggers": {
+    "crons": ["0 */6 * * *"]
+  },
   "workers_dev": true
 }
