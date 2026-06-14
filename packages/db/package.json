@@ -17,11 +17,11 @@
   "dependencies": {
     "@libsql/client": "^0.14.0",
     "@opennextjs/cloudflare": "^1.19.11",
-    "drizzle-orm": "^0.39.3"
+    "drizzle-orm": "^0.45.2"
   },
   "devDependencies": {
     "@types/node": "^22.10.7",
-    "drizzle-kit": "^0.30.4",
+    "drizzle-kit": "^0.31.10",
     "typescript": "^5.7.3"
   }
 }

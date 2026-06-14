@@ -1,4 +1,4 @@
-import { sqliteTable, text, integer } from "drizzle-orm/sqlite-core";
+import { sqliteTable, text, integer, unique } from "drizzle-orm/sqlite-core";
 
 // better-auth core tables (singular names)
 export const user = sqliteTable("user", {
@@ -92,21 +92,25 @@ export const submissions = sqliteTable("submissions", {
   reviewedAt: integer("reviewed_at", { mode: "timestamp" }),
 });
 
-export const reviews = sqliteTable("reviews", {
-  id: text("id").primaryKey(),
-  userId: text("user_id")
-    .notNull()
-    .references(() => user.id),
-  projectSlug: text("project_slug").notNull(),
-  setupEase: integer("setup_ease").notNull(),
-  documentation: integer("documentation").notNull(),
-  maintenance: integer("maintenance").notNull(),
-  wouldRecommend: text("would_recommend").notNull(), // yes | maybe | no
-  body: text("body"),
-  hidden: integer("hidden", { mode: "boolean" }).default(false),
-  createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
-  updatedAt: integer("updated_at", { mode: "timestamp" }),
-});
+export const reviews = sqliteTable(
+  "reviews",
+  {
+    id: text("id").primaryKey(),
+    userId: text("user_id")
+      .notNull()
+      .references(() => user.id),
+    projectSlug: text("project_slug").notNull(),
+    setupEase: integer("setup_ease").notNull(),
+    documentation: integer("documentation").notNull(),
+    maintenance: integer("maintenance").notNull(),
+    wouldRecommend: text("would_recommend").notNull(), // yes | maybe | no
+    body: text("body"),
+    hidden: integer("hidden", { mode: "boolean" }).default(false),
+    createdAt: integer("created_at", { mode: "timestamp" }).notNull(),
+    updatedAt: integer("updated_at", { mode: "timestamp" }),
+  },
+  (t) => [unique().on(t.userId, t.projectSlug)],
+);
 
 export const supporters = sqliteTable("supporters", {
   id: text("id").primaryKey(),
