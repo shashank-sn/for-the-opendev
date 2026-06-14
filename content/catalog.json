@@ -147,11 +147,5 @@
     {"slug":"first-oss-contribution","title":"start contributing to oss","projects":["opensource-guide","mdn","choose-a-license","standard-readme"]},
     {"slug":"replace-notion","title":"open source notion alternatives","projects":["outline","documenso"]},
     {"slug":"coding-agent-stack","title":"local coding agent stack","projects":["ollama","qwen2-5-coder","cline","continue","aider","mcp-filesystem","mcp-github","litellm"]}
-  ],
-  "sponsorTiers": [
-    {"slug":"open-supporter","name":"open supporter","price":1,"url":"https://github.com/sponsors/shashank-sn/sponsorships?sponsor=open-supporter"},
-    {"slug":"builder-backer","name":"builder backer","price":5,"url":"https://github.com/sponsors/shashank-sn/sponsorships?sponsor=builder-backer"},
-    {"slug":"sustainer","name":"open source sustainer","price":100,"url":"https://github.com/sponsors/shashank-sn/sponsorships?sponsor=sustainer"},
-    {"slug":"custom","name":"custom amount","price":null,"url":"https://github.com/sponsors/shashank-sn"}
   ]
 }

@@ -26,9 +26,9 @@ export default function HomePage() {
           <Link href="/tools">
             <Button>browse tools</Button>
           </Link>
-          <a href={SPONSOR_URLS["open-supporter"]}>
-            <Button variant="secondary">sponsor · $1/mo</Button>
-          </a>
+          <Button href={SPONSOR_URLS["open-supporter"]} variant="secondary">
+            sponsor · $1/mo
+          </Button>
         </div>
       </section>
 

@@ -2,7 +2,7 @@ export const dynamic = "force-dynamic";
 
 import { Button } from "@ftod/ui";
 import { PageShell } from "@/components/page-shell";
-import { SPONSOR_TIERS } from "@/lib/catalog";
+import { SPONSOR_PROFILE_URL, SPONSOR_TIERS } from "@/lib/sponsors";
 import { FOUNDING_SUPPORTER_LIMIT } from "@/lib/sponsors";
 import { getSupporters, isEnterpriseSupporter, tierLabel, type SupporterRow } from "@/lib/supporters-data";
 
@@ -82,7 +82,11 @@ export default async function SupportersPage() {
     <PageShell title="supporters" subtitle="discovery should be free. sponsorship keeps it independent.">
       <p style={{ maxWidth: 640, color: "var(--text-secondary)", marginBottom: 32 }}>
         for the open dev is open source — the code, the profiles, the comparisons. if we saved you an hour of research,
-        sponsor the repo on github. $1/month keeps the lights on. $100/month keeps it independent.
+        sponsor on{" "}
+        <a href={SPONSOR_PROFILE_URL} target="_blank" rel="noopener noreferrer">
+          github sponsors
+        </a>
+        . $1/month keeps the lights on. $100/month keeps it independent.
       </p>
 
       <div className="grid-cards" style={{ marginBottom: 48 }}>
@@ -106,9 +110,9 @@ export default async function SupportersPage() {
               {tier.slug !== "open-supporter" && <li>name in github readme sponsor section</li>}
               {tier.slug === "sustainer" && <li>logo on enterprise section</li>}
             </ul>
-            <a href={tier.url}>
-              <Button style={{ width: "100%" }}>{tier.slug === "custom" ? "custom amount" : "sponsor on github"}</Button>
-            </a>
+            <Button href={tier.url} style={{ width: "100%" }}>
+              {tier.slug === "custom" ? "custom amount" : "sponsor on github"}
+            </Button>
           </div>
         ))}
       </div>

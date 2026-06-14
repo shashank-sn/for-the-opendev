@@ -26,9 +26,15 @@ export function SiteFooter() {
           <div>
             <p style={{ margin: "0 0 12px", color: "var(--text-tertiary)", fontSize: 13 }}>support</p>
             <div style={{ display: "flex", flexDirection: "column", gap: 8, fontSize: 14 }}>
-              <a href={SPONSOR_URLS["open-supporter"]}>open supporter · $1/mo</a>
-              <a href={SPONSOR_URLS["builder-backer"]}>builder backer · $5/mo</a>
-              <a href={SPONSOR_URLS.sustainer}>sustainer · $100/mo</a>
+              <a href={SPONSOR_URLS["open-supporter"]} target="_blank" rel="noopener noreferrer">
+                open supporter · $1/mo
+              </a>
+              <a href={SPONSOR_URLS["builder-backer"]} target="_blank" rel="noopener noreferrer">
+                builder backer · $5/mo
+              </a>
+              <a href={SPONSOR_URLS.sustainer} target="_blank" rel="noopener noreferrer">
+                sustainer · $100/mo
+              </a>
               <Link href="/supporters">all tiers</Link>
             </div>
           </div>

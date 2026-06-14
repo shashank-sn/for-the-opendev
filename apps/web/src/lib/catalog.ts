@@ -7,7 +7,7 @@ export const CATEGORIES = catalog.categories;
 export const PROJECTS = catalog.projects;
 export const COMPARISONS = catalog.comparisons;
 export const COLLECTIONS = catalog.collections;
-export const SPONSOR_TIERS = catalog.sponsorTiers;
+export { SPONSOR_TIERS } from "./sponsors";
 
 export function getProjectsByCategory(category: string): Project[] {
   return PROJECTS.filter((p) => p.category === category);

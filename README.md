@@ -31,12 +31,12 @@ discovery stays free. sponsorship keeps it independent.
 
 | tier | price | |
 |------|-------|---|
-| open supporter | $1/mo | [sponsor →](https://github.com/sponsors/shashank-sn/sponsorships?sponsor=open-supporter) |
-| builder backer | $5/mo | [sponsor →](https://github.com/sponsors/shashank-sn/sponsorships?sponsor=builder-backer) |
-| open source sustainer | $100/mo | [sponsor →](https://github.com/sponsors/shashank-sn/sponsorships?sponsor=sustainer) |
+| open supporter | $1/mo | [sponsor →](https://github.com/sponsors/shashank-sn?frequency=recurring) |
+| builder backer | $5/mo | [sponsor →](https://github.com/sponsors/shashank-sn?frequency=recurring) |
+| open source sustainer | $100/mo | [sponsor →](https://github.com/sponsors/shashank-sn?frequency=recurring) |
 | custom amount | you choose | [sponsor →](https://github.com/sponsors/shashank-sn) |
 
-[see all tiers on /supporters](https://fortheopen.dev/supporters)
+[see all tiers on /supporters](https://fortheopen-dev.emailshashanksn.workers.dev/supporters)
 
 ---
 

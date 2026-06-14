@@ -31,6 +31,8 @@ copy `.env.example` to `apps/web/.env.local` and fill oauth secrets for auth.
 
 **staging worker (live):** https://fortheopen-dev.emailshashanksn.workers.dev — d1 id is committed in `apps/web/wrangler.jsonc`. point `fortheopen.dev` dns at this worker when ready.
 
+**sponsor tier links:** edit `apps/web/src/lib/sponsors.ts` — after creating $1/$5/$100 tiers in [GitHub Sponsors](https://github.com/sponsors/shashank-sn), paste each tier's `tier_id` from the dashboard share link into `githubTierId` for direct checkout urls.
+
 local workers preview:
 
 ```bash

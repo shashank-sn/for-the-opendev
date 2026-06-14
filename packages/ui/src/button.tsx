@@ -1,8 +1,24 @@
-import type { ButtonHTMLAttributes, ReactNode } from "react";
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, CSSProperties, ReactNode } from "react";
 
 type Variant = "primary" | "secondary" | "ghost";
 
-const styles: Record<Variant, React.CSSProperties> = {
+type SharedProps = {
+  children: ReactNode;
+  variant?: Variant;
+  style?: CSSProperties;
+};
+
+type ButtonAsButton = SharedProps &
+  ButtonHTMLAttributes<HTMLButtonElement> & {
+    href?: undefined;
+  };
+
+type ButtonAsLink = SharedProps &
+  Omit<AnchorHTMLAttributes<HTMLAnchorElement>, "style" | "children"> & {
+    href: string;
+  };
+
+const styles: Record<Variant, CSSProperties> = {
   primary: {
     background: "var(--accent)",
     color: "#fff",
@@ -20,31 +36,46 @@ const styles: Record<Variant, React.CSSProperties> = {
   },
 };
 
-export function Button({
-  children,
-  variant = "primary",
-  style,
-  ...props
-}: ButtonHTMLAttributes<HTMLButtonElement> & {
-  children: ReactNode;
-  variant?: Variant;
-}) {
+export function Button(props: ButtonAsButton | ButtonAsLink) {
+  const { children, variant = "primary", style } = props;
+
+  const sharedStyle: CSSProperties = {
+    display: "inline-flex",
+    alignItems: "center",
+    justifyContent: "center",
+    gap: 8,
+    padding: "10px 16px",
+    borderRadius: "var(--radius-md)",
+    fontWeight: 500,
+    textDecoration: "none",
+    transition: "background 0.15s, border-color 0.15s",
+    ...styles[variant],
+    ...style,
+  };
+
+  if ("href" in props && props.href) {
+    const { href, ...anchorProps } = props;
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        {...anchorProps}
+        style={sharedStyle}
+      >
+        {children}
+      </a>
+    );
+  }
+
+  const { href: _href, ...buttonProps } = props as ButtonAsButton;
   return (
     <button
-      {...props}
+      {...buttonProps}
       style={{
-        display: "inline-flex",
-        alignItems: "center",
-        justifyContent: "center",
-        gap: 8,
-        padding: "10px 16px",
-        borderRadius: "var(--radius-md)",
-        fontWeight: 500,
-        cursor: props.disabled ? "not-allowed" : "pointer",
-        opacity: props.disabled ? 0.6 : 1,
-        transition: "background 0.15s, border-color 0.15s",
-        ...styles[variant],
-        ...style,
+        ...sharedStyle,
+        cursor: buttonProps.disabled ? "not-allowed" : "pointer",
+        opacity: buttonProps.disabled ? 0.6 : 1,
       }}
     >
       {children}
