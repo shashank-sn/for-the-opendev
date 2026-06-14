@@ -122,7 +122,7 @@ sponsored placements still never touch reviews or rankings.
 
 ### open source commitment
 
-> the platform code is mit-licensed. we build on open source — better-auth, pagefind, lucide, geist. see our stack at github.com/fortheopendev/fortheopendev.
+> the platform code is mit-licensed. we build on open source — better-auth, pagefind, lucide, geist. see our stack at https://github.com/shashank-sn/for-the-opendev.
 
 ---
 

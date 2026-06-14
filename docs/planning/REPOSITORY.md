@@ -121,7 +121,7 @@ still to do in github sponsors dashboard:
 ### required files at repo root
 
 ```
-fortheopendev/
+for-the-opendev/
 ├── LICENSE                          # MIT — required
 ├── README.md                        # includes sponsor table + link
 ├── .github/

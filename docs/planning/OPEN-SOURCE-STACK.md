@@ -172,7 +172,7 @@ ci fails if a non-osi license appears in production dependencies.
 
 we only list projects with verified oss licenses on github. we apply the same standard to ourselves:
 
-- the fortheopendev repo is public
+- the for-the-opendev repo is public at https://github.com/shashank-sn/for-the-opendev
 - license file in root
 - no proprietary blobs in the repo
 - sponsor tiers via github sponsors, documented in readme
