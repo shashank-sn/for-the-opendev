@@ -9,24 +9,24 @@ export default function HomePage() {
 
   return (
     <PageShell>
-      <section className="stagger-item" style={{ marginBottom: 56, maxWidth: 540 }}>
-        <p style={{ color: "var(--accent-text)", margin: "0 0 12px", fontSize: 12, fontWeight: 500, letterSpacing: "0.04em" }}>
+      <section className="stagger-item" style={{ marginBottom: 64, maxWidth: 560 }}>
+        <p style={{ color: "var(--accent)", margin: "0 0 14px", fontSize: 12, fontWeight: 500, letterSpacing: "0.06em", textTransform: "uppercase" }}>
           {PROJECTS.length} curated profiles
         </p>
-        <h1 style={{ margin: "0 0 16px", fontSize: 40, lineHeight: 1.05, letterSpacing: "-0.04em", fontWeight: 600 }}>
+        <h1 style={{ margin: "0 0 18px", fontSize: 44, lineHeight: 1.05, letterSpacing: "-0.04em", fontWeight: 600 }}>
           discover open source worth your time
         </h1>
-        <p style={{ margin: 0, color: "var(--text-secondary)", fontSize: 15, lineHeight: 1.6, letterSpacing: "-0.01em" }}>
+        <p style={{ margin: 0, color: "var(--text-secondary)", fontSize: 16, lineHeight: 1.6, letterSpacing: "-0.01em" }}>
           curated builder profiles, honest verdicts, and comparisons — not another directory.
         </p>
       </section>
 
-      <section className="stagger-item" style={{ marginBottom: 56 }}>
+      <section className="stagger-item" style={{ marginBottom: 64 }}>
         <SponsorHeroPanel />
       </section>
 
-      <section className="stagger-item" style={{ marginBottom: 56 }}>
-        <h2 style={{ margin: "0 0 14px", fontSize: 16, fontWeight: 600, letterSpacing: "-0.02em" }}>categories</h2>
+      <section className="stagger-item" style={{ marginBottom: 64 }}>
+        <h2 style={{ margin: "0 0 16px", fontSize: 16, fontWeight: 600, letterSpacing: "-0.02em" }}>categories</h2>
         <div className="category-grid">
           {CATEGORIES.map((c) => (
             <Link key={c.slug} href={`/${c.slug}`} className="category-tile">
@@ -37,10 +37,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="stagger-item" style={{ marginBottom: 56 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
+      <section className="stagger-item" style={{ marginBottom: 64 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
           <h2 style={{ margin: 0, fontSize: 16, fontWeight: 600, letterSpacing: "-0.02em" }}>collections</h2>
-          <Link href="/collections" style={{ fontSize: 12, color: "var(--text-tertiary)" }}>
+          <Link href="/collections" style={{ fontSize: 12, color: "var(--text-tertiary)", fontWeight: 500 }}>
             view all →
           </Link>
         </div>
@@ -68,10 +68,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="stagger-item" style={{ marginBottom: 56 }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 14 }}>
+      <section className="stagger-item" style={{ marginBottom: 64 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16 }}>
           <h2 style={{ margin: 0, fontSize: 16, fontWeight: 600, letterSpacing: "-0.02em" }}>staff picks</h2>
-          <Link href="/launches" style={{ fontSize: 12, color: "var(--text-tertiary)" }}>
+          <Link href="/launches" style={{ fontSize: 12, color: "var(--text-tertiary)", fontWeight: 500 }}>
             view all →
           </Link>
         </div>

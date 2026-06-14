@@ -23,6 +23,7 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
   text-wrap: balance;
+  color: var(--text-primary);
 }
 
 p, li, figcaption, blockquote, dd {
@@ -43,7 +44,7 @@ img {
 }
 
 button, [role="button"] {
-  transition-property: background, border-color, box-shadow, scale;
+  transition-property: background, border-color, box-shadow, scale, color;
   transition-duration: 150ms;
   transition-timing-function: ease-out;
 }
@@ -52,7 +53,19 @@ button:active, [role="button"]:active {
   scale: 0.96;
 }
 
-/* ── stagger ─────────────────────────────────────────── */
+/* ── conductorai-style reveal animation ──────────────── */
+
+.hero-reveal {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 1.3s ease-in-out, transform 1.3s ease-in-out;
+  will-change: opacity, transform;
+}
+
+.hero-reveal.revealed {
+  opacity: 1;
+  transform: none;
+}
 
 @keyframes fadeUp {
   from {
@@ -67,14 +80,26 @@ button:active, [role="button"]:active {
 
 .stagger-item {
   opacity: 0;
-  animation: fadeUp 500ms cubic-bezier(0.2, 0, 0, 1) forwards;
+  animation: fadeUp 1.3s ease-in-out forwards;
 }
 
 .stagger-item:nth-child(1) { animation-delay: 0ms; }
-.stagger-item:nth-child(2) { animation-delay: 80ms; }
-.stagger-item:nth-child(3) { animation-delay: 160ms; }
-.stagger-item:nth-child(4) { animation-delay: 240ms; }
-.stagger-item:nth-child(5) { animation-delay: 320ms; }
+.stagger-item:nth-child(2) { animation-delay: 120ms; }
+.stagger-item:nth-child(3) { animation-delay: 240ms; }
+.stagger-item:nth-child(4) { animation-delay: 360ms; }
+.stagger-item:nth-child(5) { animation-delay: 480ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  .stagger-item {
+    opacity: 1;
+    animation: none;
+  }
+  .hero-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
 
 /* ── layout ──────────────────────────────────────────── */
 
@@ -113,6 +138,7 @@ button:active, [role="button"]:active {
   font-weight: 600;
   font-size: 15px;
   letter-spacing: -0.02em;
+  color: var(--text-primary);
 }
 
 .sidebar-search-btn {
@@ -129,14 +155,14 @@ button:active, [role="button"]:active {
   font-size: 13px;
   cursor: pointer;
   min-height: 40px;
-  transition-property: box-shadow, background;
+  transition-property: box-shadow, background, color;
   transition-duration: 150ms;
   transition-timing-function: ease-out;
 }
 
 .sidebar-search-btn:hover {
   box-shadow: var(--shadow-card-hover);
-  background: var(--hover-bg);
+  color: var(--text-secondary);
 }
 
 .sidebar-search-btn:active {
@@ -196,8 +222,8 @@ button:active, [role="button"]:active {
 }
 
 .sidebar-link.active {
-  color: var(--text-primary);
-  background: var(--active-bg);
+  color: var(--accent);
+  background: var(--accent-subtle);
   border-left-color: var(--accent);
 }
 
@@ -218,26 +244,26 @@ button:active, [role="button"]:active {
 .main-inner {
   max-width: 1100px;
   margin: 0 auto;
-  padding: 40px 48px 80px;
+  padding: 48px 48px 96px;
 }
 
 /* ── page header ─────────────────────────────────────── */
 
 .page-header {
-  margin-bottom: 36px;
+  margin-bottom: 40px;
 }
 
 .page-header h1 {
   margin: 0 0 8px;
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 600;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
 }
 
 .page-header p {
   margin: 0;
   color: var(--text-secondary);
-  font-size: 14px;
+  font-size: 15px;
   letter-spacing: -0.01em;
 }
 
@@ -259,14 +285,14 @@ button:active, [role="button"]:active {
   cursor: pointer;
   display: flex;
   flex-direction: column;
-  transition-property: box-shadow, background;
-  transition-duration: 150ms;
+  transition-property: box-shadow, background, transform;
+  transition-duration: 250ms;
   transition-timing-function: ease-out;
 }
 
 .ft-card:hover {
   box-shadow: var(--shadow-card-hover);
-  background: var(--hover-bg);
+  transform: translateY(-2px);
 }
 
 .ft-card:active {
@@ -293,7 +319,7 @@ button:active, [role="button"]:active {
   margin: 0;
   color: var(--text-secondary);
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.55;
   letter-spacing: -0.01em;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -323,14 +349,14 @@ button:active, [role="button"]:active {
   display: flex;
   flex-direction: column;
   min-height: 200px;
-  transition-property: box-shadow, background;
-  transition-duration: 150ms;
+  transition-property: box-shadow, background, transform;
+  transition-duration: 250ms;
   transition-timing-function: ease-out;
 }
 
 .collection-card:hover {
   box-shadow: var(--shadow-card-hover);
-  background: var(--hover-bg);
+  transform: translateY(-2px);
 }
 
 .collection-card:active {
@@ -347,7 +373,7 @@ button:active, [role="button"]:active {
 .collection-card-icon {
   width: 32px;
   height: 32px;
-  border-radius: 10px;
+  border-radius: var(--radius-sm);
   background: var(--bg-elevated);
   box-shadow: var(--shadow-card);
   display: flex;
@@ -355,7 +381,7 @@ button:active, [role="button"]:active {
   justify-content: center;
   font-size: 13px;
   font-weight: 600;
-  color: var(--accent-text);
+  color: var(--accent);
   overflow: hidden;
 }
 
@@ -371,7 +397,7 @@ button:active, [role="button"]:active {
   margin: 0;
   color: var(--text-secondary);
   font-size: 13px;
-  line-height: 1.5;
+  line-height: 1.55;
   letter-spacing: -0.01em;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -399,7 +425,7 @@ button:active, [role="button"]:active {
 
 .category-tile {
   padding: 14px 16px;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-md);
   box-shadow: var(--shadow-card);
   background: var(--bg-surface);
   display: flex;
@@ -410,14 +436,14 @@ button:active, [role="button"]:active {
   color: var(--text-primary);
   letter-spacing: -0.01em;
   min-height: 44px;
-  transition-property: box-shadow, background;
-  transition-duration: 150ms;
+  transition-property: box-shadow, background, transform;
+  transition-duration: 250ms;
   transition-timing-function: ease-out;
 }
 
 .category-tile:hover {
   box-shadow: var(--shadow-card-hover);
-  background: var(--hover-bg);
+  transform: translateY(-1px);
 }
 
 .category-tile:active {
@@ -571,9 +597,10 @@ button:active, [role="button"]:active {
 .sponsor-strip__eyebrow {
   margin: 0;
   font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: lowercase;
-  color: var(--accent-text);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
 }
 
 .sponsor-strip__headline {
@@ -592,12 +619,13 @@ button:active, [role="button"]:active {
 
 .sponsor-strip__link {
   font-size: 13px;
-  color: var(--accent-text);
+  color: var(--accent);
   text-decoration: none;
   min-height: 40px;
   display: inline-flex;
   align-items: center;
   letter-spacing: -0.01em;
+  font-weight: 500;
 }
 
 .sponsor-strip__link:hover {
@@ -615,13 +643,14 @@ button:active, [role="button"]:active {
   text-decoration: none;
   font-size: 13px;
   min-height: 36px;
-  transition-property: box-shadow;
-  transition-duration: 150ms;
+  transition-property: box-shadow, transform;
+  transition-duration: 250ms;
   transition-timing-function: ease-out;
 }
 
 .sponsor-tier-chip:hover {
   box-shadow: var(--shadow-card-hover);
+  transform: translateY(-1px);
 }
 
 .sponsor-tier-chip:active {
@@ -641,7 +670,7 @@ button:active, [role="button"]:active {
 .sponsor-hero-panel {
   position: relative;
   overflow: hidden;
-  padding: 32px;
+  padding: 36px;
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-card);
   background: var(--bg-surface);
@@ -663,19 +692,20 @@ button:active, [role="button"]:active {
 }
 
 .sponsor-hero-panel__eyebrow {
-  margin: 0 0 8px;
+  margin: 0 0 10px;
   font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: lowercase;
-  color: var(--accent-text);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
 }
 
 .sponsor-hero-panel__title {
-  margin: 0 0 10px;
+  margin: 0 0 12px;
   max-width: 520px;
   font-size: clamp(1.2rem, 2.5vw, 1.4rem);
   line-height: 1.25;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.03em;
   font-weight: 600;
 }
 
@@ -684,7 +714,7 @@ button:active, [role="button"]:active {
   max-width: 480px;
   color: var(--text-secondary);
   font-size: 14px;
-  line-height: 1.55;
+  line-height: 1.6;
   letter-spacing: -0.01em;
 }
 
@@ -705,7 +735,7 @@ button:active, [role="button"]:active {
 .sponsor-footer-band {
   border-top: 1px solid var(--border-default);
   background: var(--accent-subtle);
-  padding: 32px 0;
+  padding: 36px 0;
 }
 
 .sponsor-footer-band__inner {
@@ -723,7 +753,7 @@ button:active, [role="button"]:active {
   margin: 0 0 4px;
   font-size: 17px;
   font-weight: 600;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.025em;
 }
 
 .sponsor-footer-band__body {
@@ -760,7 +790,7 @@ button:active, [role="button"]:active {
   position: fixed;
   inset: 0;
   z-index: 50;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.4);
   backdrop-filter: blur(4px);
 }
 
@@ -798,7 +828,7 @@ button:active, [role="button"]:active {
   }
 
   .main-inner {
-    padding: 24px 20px 60px;
+    padding: 28px 20px 64px;
   }
 
   .sponsor-strip__inner,

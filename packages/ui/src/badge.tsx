@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 const tierColors: Record<string, string> = {
   "staff pick": "var(--badge-staff-pick)",
   featured: "#8b5cf6",
-  verified: "#3b82f6",
+  verified: "var(--accent)",
   listed: "var(--text-tertiary)",
 };
 
