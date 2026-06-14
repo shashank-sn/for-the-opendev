@@ -15,7 +15,7 @@ export type ProjectContent = {
   replaces: string;
   difficulty: number;
   tags: string[];
-  lastVerified?: string;
+  lastVerified?: string | Date;
   body: string;
 };
 

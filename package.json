@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "pnpm --filter @ftod/web dev",
-    "build": "pnpm --filter @ftod/web build",
+    "build": "pnpm --filter @ftod/web build && pnpm --filter @ftod/web pagefind",
     "lint": "pnpm -r lint",
     "db:generate": "pnpm --filter @ftod/db generate",
     "db:migrate": "pnpm --filter @ftod/db migrate",

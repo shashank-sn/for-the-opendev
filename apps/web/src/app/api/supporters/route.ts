@@ -7,6 +7,8 @@ export async function GET() {
     .select({
       githubLogin: supporters.githubLogin,
       tier: supporters.tier,
+      amountCents: supporters.amountCents,
+      isEnterprise: supporters.isEnterprise,
       syncedAt: supporters.syncedAt,
     })
     .from(supporters)
