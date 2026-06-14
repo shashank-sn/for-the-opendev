@@ -13,20 +13,20 @@ lastVerified: 2026-06-14
 
 ## verdict
 
-opentelemetry is on the launch 100 catalog. editorial deep-dive coming soon — metadata verified against github.
+opentelemetry is the vendor-neutral observability standard — traces, metrics, and logs with one instrumentation story across languages.
 
 ## who it's for
 
-builders evaluating oss options in resources.
+teams shipping production services who refuse to lock into a single apm vendor's proprietary sdk.
 
 ## skip if
 
-maintenance, license, or setup complexity doesn't match your timeline — check github activity before committing.
+you are pre-launch with a single monolith and stdout logging is enough — add otel when debugging gets painful.
 
 ## install path
 
-see the official readme on github. difficulty 2/5 for a solo dev.
+add the sdk to your service, export to jaeger or signoz locally, verify a trace spans your critical request path.
 
 ## commercial use
 
-<span class="preserve-case">Apache-2.0</span> — verify current license in repo before production use.
+apache-2.0 — specification and sdks are open; backends may be commercial.

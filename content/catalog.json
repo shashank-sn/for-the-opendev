@@ -1,6 +1,6 @@
 {
   "categories": [
-    { "slug": "tools", "label": "tools", "count": 32 },
+    { "slug": "tools", "label": "tools", "count": 36 },
     { "slug": "frameworks", "label": "frameworks", "count": 16 },
     { "slug": "models", "label": "models", "count": 14 },
     { "slug": "resources", "label": "resources", "count": 10 },
@@ -24,6 +24,10 @@
     {"slug":"open-webui","name":"open webui","category":"tools","tier":"staff pick","license":"BSD-3-Clause","github":"https://github.com/open-webui/open-webui","replaces":"chatgpt ui","difficulty":2,"tags":["ai-native"]},
     {"slug":"librechat","name":"librechat","category":"tools","tier":"featured","license":"MIT","github":"https://github.com/danny-avila/LibreChat","replaces":"chatgpt ui","difficulty":3,"tags":["ai-native"]},
     {"slug":"ollama","name":"ollama","category":"tools","tier":"staff pick","license":"MIT","github":"https://github.com/ollama/ollama","replaces":"openai api (local)","difficulty":1,"tags":["ai-native"]},
+    {"slug":"cline","name":"cline","category":"tools","tier":"staff pick","license":"Apache-2.0","github":"https://github.com/cline/cline","replaces":"cursor, copilot","difficulty":2,"tags":["ai-native","indie-oss"]},
+    {"slug":"continue","name":"continue","category":"tools","tier":"featured","license":"Apache-2.0","github":"https://github.com/continuedev/continue","replaces":"copilot, cursor","difficulty":2,"tags":["ai-native"]},
+    {"slug":"command-code","name":"command code","category":"tools","tier":"featured","license":"Proprietary","github":"https://github.com/CommandCodeAI/cmd-old-public","website":"https://commandcode.ai","replaces":"cursor, claude code","difficulty":2,"tags":["ai-native"]},
+    {"slug":"aider","name":"aider","category":"tools","tier":"featured","license":"Apache-2.0","github":"https://github.com/Aider-AI/aider","replaces":"copilot cli","difficulty":2,"tags":["ai-native"]},
     {"slug":"vllm","name":"vllm","category":"tools","tier":"featured","license":"Apache-2.0","github":"https://github.com/vllm-project/vllm","replaces":"openai api (serving)","difficulty":4,"tags":["ai-native"]},
     {"slug":"litellm","name":"litellm","category":"tools","tier":"featured","license":"MIT","github":"https://github.com/BerriAI/litellm","replaces":"direct llm api calls","difficulty":2,"tags":["ai-native"]},
     {"slug":"langfuse","name":"langfuse","category":"tools","tier":"featured","license":"MIT","github":"https://github.com/langfuse/langfuse","replaces":"langsmith","difficulty":2,"tags":["ai-native"]},
@@ -130,7 +134,8 @@
     {"slug":"image-generation","title":"open source image models","projects":["flux-1"]},
     {"slug":"embedding-models","title":"embedding models for rag","projects":["nomic-embed-v2","bge-m3"]},
     {"slug":"mcp-starter-pack","title":"mcp servers to start with","projects":["mcp-filesystem","mcp-github","mcp-playwright","mcp-postgres"]},
-    {"slug":"feature-flags","title":"open source feature flags","projects":["posthog"]}
+    {"slug":"feature-flags","title":"open source feature flags","projects":["posthog"]},
+    {"slug":"coding-agents-compared","title":"open coding agents compared","projects":["cline","continue","aider","command-code","ollama"]}
   ],
   "collections": [
     {"slug":"indie-saas-infra","title":"infrastructure for indie saas","projects":["supabase","posthog","coolify","listmonk"]},
@@ -140,7 +145,8 @@
     {"slug":"ai-agent-stack","title":"build ai agents with oss","projects":["langchain","mcp-github","litellm","langfuse"]},
     {"slug":"terminal-productivity","title":"upgrade your terminal","projects":["ripgrep","fzf","atuin","starship","zoxide"]},
     {"slug":"first-oss-contribution","title":"start contributing to oss","projects":["opensource-guide","mdn","choose-a-license","standard-readme"]},
-    {"slug":"replace-notion","title":"open source notion alternatives","projects":["outline","documenso"]}
+    {"slug":"replace-notion","title":"open source notion alternatives","projects":["outline","documenso"]},
+    {"slug":"coding-agent-stack","title":"local coding agent stack","projects":["ollama","qwen2-5-coder","cline","continue","aider","mcp-filesystem","mcp-github","litellm"]}
   ],
   "sponsorTiers": [
     {"slug":"open-supporter","name":"open supporter","price":1,"url":"https://github.com/sponsors/shashank-sn/sponsorships?sponsor=open-supporter"},

@@ -13,20 +13,20 @@ lastVerified: 2026-06-14
 
 ## verdict
 
-human eval is on the launch 100 catalog. editorial deep-dive coming soon — metadata verified against github.
+human eval is the canonical code generation benchmark — before you claim your local coder model "beats copilot," run human eval honestly.
 
 ## who it's for
 
-builders evaluating oss options in datasets.
+teams comparing qwen2.5-coder, deepseek, and other open weights on reproducible coding tasks.
 
 ## skip if
 
-maintenance, license, or setup complexity doesn't match your timeline — check github activity before committing.
+you are not evaluating models — application builders can skip downloading the benchmark harness.
 
 ## install path
 
-see the official readme on github. difficulty 1/5 for a solo dev.
+clone openai/human-eval, run the provided evaluation script against your model endpoint, report pass@k transparently.
 
 ## commercial use
 
-<span class="preserve-case">MIT</span> — verify current license in repo before production use.
+mit — benchmark harness is open; do not overfit your product to benchmark trivia.

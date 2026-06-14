@@ -13,20 +13,20 @@ lastVerified: 2026-06-14
 
 ## verdict
 
-authentik is on the launch 100 catalog. editorial deep-dive coming soon — metadata verified against github.
+authentik is the self-hosted identity provider indie teams reach for when auth0 pricing stings. sso, oauth, ldap bridges, and a real admin ui — not a weekend oauth script.
 
 ## who it's for
 
-builders evaluating alternatives to auth0.
+builders shipping b2b saas or internal tools who need saml/oidc without per-seat idp rent.
 
 ## skip if
 
-maintenance, license, or setup complexity doesn't match your timeline — check github activity before committing.
+you only need email magic links in one app — supabase auth or better-auth may be enough.
 
 ## install path
 
-see the official readme on github. difficulty 4/5 for a solo dev.
+docker compose or kubernetes helm, configure first flow provider, wire your app as an oauth client, test login end-to-end.
 
 ## commercial use
 
-<span class="preserve-case">MIT</span> — verify current license in repo before production use.
+mit — enterprise support is separate; verify ee modules if you need them.

@@ -18,7 +18,7 @@ pnpm content:generate
 pnpm dev
 ```
 
-run `pnpm typecheck` and `pnpm build` before opening a pr.
+run `pnpm typecheck`, `pnpm build`, and `pnpm --filter @ftod/web build:cloudflare` (with `FTOD_DB_DRIVER=d1`) before opening a pr.
 
 copy `.env.example` to `apps/web/.env.local` and fill oauth secrets for auth.
 
@@ -27,7 +27,7 @@ copy `.env.example` to `apps/web/.env.local` and fill oauth secrets for auth.
 1. create a d1 database and paste its id into `apps/web/wrangler.jsonc`
 2. set github repo variables: `CLOUDFLARE_DEPLOY_ENABLED=true`, `BETTER_AUTH_URL`, `NEXT_PUBLIC_SITE_URL`
 3. set github secrets: `CLOUDFLARE_API_TOKEN`, `CLOUDFLARE_ACCOUNT_ID`, `BETTER_AUTH_SECRET`
-4. push to `main` — deploy runs `pnpm --filter @ftod/web build:cloudflare` then `wrangler deploy`
+4. push to `main` or run the **deploy** workflow manually — deploy is skipped until `CLOUDFLARE_DEPLOY_ENABLED=true`; then it runs `pnpm --filter @ftod/web build:cloudflare` and `wrangler deploy`
 
 local workers preview:
 

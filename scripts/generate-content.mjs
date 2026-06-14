@@ -1185,6 +1185,804 @@ comfyui or diffusers pipeline, download dev weights, generate test prompts, esta
 ## commercial use
 
 apache-2.0 weights — read black forest labs license for production redistribution.`,
+  authentik: `## verdict
+
+authentik is the self-hosted identity provider indie teams reach for when auth0 pricing stings. sso, oauth, ldap bridges, and a real admin ui — not a weekend oauth script.
+
+## who it's for
+
+builders shipping b2b saas or internal tools who need saml/oidc without per-seat idp rent.
+
+## skip if
+
+you only need email magic links in one app — supabase auth or better-auth may be enough.
+
+## install path
+
+docker compose or kubernetes helm, configure first flow provider, wire your app as an oauth client, test login end-to-end.
+
+## commercial use
+
+mit — enterprise support is separate; verify ee modules if you need them.`,
+  plane: `## verdict
+
+plane is the open linear/jira alternative that indie product teams actually adopt. issues, cycles, modules, and a clean ux without atlassian tax.
+
+## who it's for
+
+small teams who want structured product work without paying per-seat project management saas.
+
+## skip if
+
+you need heavy enterprise pmo, portfolio management, or deep jira plugin ecosystems on day one.
+
+## install path
+
+self-host via docker or use plane cloud, import a sample project, connect github for issue sync if needed.
+
+## commercial use
+
+agpl — understand copyleft before embedding in a commercial platform.`,
+  meilisearch: `## verdict
+
+meilisearch is instant search that feels magic in demos and stays fast in production. typo tolerance, faceting, and a simple api without running elasticsearch ops.
+
+## who it's for
+
+indie saas adding "search that just works" to docs, catalogs, or admin panels.
+
+## skip if
+
+you need complex aggregations across petabyte logs — opensearch or clickhouse search patterns win there.
+
+## install path
+
+docker or managed cloud, index a json collection, wire the search box, tune ranking rules for your domain.
+
+## commercial use
+
+mit — cloud hosted tier is optional.`,
+  chatwoot: `## verdict
+
+chatwoot is the open intercom for teams who want live chat and inboxes on infrastructure they control. multichannel support without per-agent saas rent.
+
+## who it's for
+
+indie saas with a support inbox who need website widget chat plus email/social channels.
+
+## skip if
+
+you only need a simple contact form — lighter tools exist; chatwoot shines with agent workflows.
+
+## install path
+
+docker compose, connect smtp and one channel (website widget), invite agents, test a conversation loop.
+
+## commercial use
+
+mit — managed hosting available separately.`,
+  django: `## verdict
+
+django is the batteries-included python framework that still wins for admin-heavy apps and rapid backend delivery. orm, auth, migrations, and a mature ecosystem.
+
+## who it's for
+
+solo builders and small teams shipping crud-heavy products, internal tools, or api backends who want convention over configuration.
+
+## skip if
+
+you are all-in on typescript full-stack — next.js or fastapi may match your stack better.
+
+## install path
+
+\`pip install django\`, startproject, runserver, add an app with models and admin, deploy via coolify or fly.
+
+## commercial use
+
+bsd-3-clause — standard permissive terms.`,
+  trpc: `## verdict
+
+trpc removes the api contract ceremony for typescript teams. end-to-end types from server to client without openapi codegen drift.
+
+## who it's for
+
+full-stack typescript products where the frontend and backend share a repo and you want refactor-safe rpc.
+
+## skip if
+
+you need public third-party api consumers — graphql or openapi-first designs are clearer boundaries.
+
+## install path
+
+add trpc to an existing next.js or express app, define a router, call from react query client, ship one feature slice.
+
+## commercial use
+
+mit — no restrictions for commercial apps.`,
+  htmx: `## verdict
+
+htmx is hypermedia for builders tired of shipping megabytes of javascript to toggle a modal. server-rendered html with surgical interactivity.
+
+## who it's for
+
+indie devs who want django, rails, or go templates to feel modern without a spa rewrite.
+
+## skip if
+
+you need offline-first mobile or heavy client state — react/svelte still earn their bundle size there.
+
+## install path
+
+add the script tag, replace one form post with hx-post, progressively enhance list filters and modals.
+
+## commercial use
+
+bsd-2-clause — permissive.`,
+  playwright: `## verdict
+
+playwright is the e2e testing default for modern web apps. real browsers, reliable auto-waiting, and traces that actually help you debug flakes.
+
+## who it's for
+
+teams shipping customer-facing flows who need confidence beyond unit tests — checkout, auth, onboarding.
+
+## skip if
+
+you have no stable ui yet — invest in product shape first; playwright pays off once flows repeat.
+
+## install path
+
+\`pnpm create playwright\`, write one critical path test, run in ci, add trace-on-failure for debugging.
+
+## commercial use
+
+apache-2.0 — standard terms.`,
+  vite: `## verdict
+
+vite is the dev server experience we expect in 2026 — instant hmr, sensible defaults, and a build pipeline that stays out of your way.
+
+## who it's for
+
+frontend builders starting new apps or migrating off slower webpack configs who want fast feedback loops.
+
+## skip if
+
+you are committed to next.js app router conventions — use vite for libraries, docs, or separate spa shells.
+
+## install path
+
+\`pnpm create vite\`, pick framework template, dev server in seconds, deploy static build to cloudflare pages.
+
+## commercial use
+
+mit — no restrictions.`,
+  "deepseek-r1": `## verdict
+
+deepseek r1 is the open reasoning model line that made chain-of-thought style inference accessible on self-hosted gpus. strong for hard coding and math tasks when you can afford the latency.
+
+## who it's for
+
+builders experimenting with agentic workflows and step-by-step reasoning without closed o1 api pricing.
+
+## skip if
+
+you need sub-second chat on a laptop — smaller models or hosted apis may fit better.
+
+## install path
+
+pull weights from the official repo, serve via vllm or ollama if supported, benchmark on your hardware before production.
+
+## commercial use
+
+mit — verify upstream license file before shipping customer-facing features.`,
+  "mistral-small-3": `## verdict
+
+mistral small 3 is a pragmatic open model family for fast local inference — good quality per watt for assistants and extraction tasks.
+
+## who it's for
+
+indie devs running 7b–24b class models on a single gpu who want apache-licensed weights without drama.
+
+## skip if
+
+you need frontier multimodal or deepest reasoning — pair with larger models for hard tasks only.
+
+## install path
+
+download from mistral/huggingface, serve with ollama or vllm, tune system prompts for your product domain.
+
+## commercial use
+
+apache-2.0 — check model card for any additional terms.`,
+  "gemma-3": `## verdict
+
+gemma 3 is google's open model line for builders who want compact, capable weights with clear gemma terms. solid for on-device and edge experiments.
+
+## who it's for
+
+teams prototyping assistants and classification on constrained hardware before scaling to larger open weights.
+
+## skip if
+
+you cannot accept gemma-specific usage terms — read the license before production redistribution.
+
+## install path
+
+pull from kaggle or huggingface per google's distribution path, run via ollama or transformers, evaluate on your eval set.
+
+## commercial use
+
+gemma terms — not a generic apache license; legal review for commercial products.`,
+  "qwen2-5-coder": `## verdict
+
+qwen2.5-coder is the local copilot alternative worth benchmarking. code completion, edits, and agent loops when paired with cline or aider.
+
+## who it's for
+
+builders running ollama or vllm who want an apache-licensed coding model without sending source to closed apis.
+
+## skip if
+
+you need the polish of github copilot's global index — local models only see what you put in context.
+
+## install path
+
+\`ollama pull qwen2.5-coder\` or equivalent, point your coding agent at the local endpoint, test on a real repo refactor.
+
+## commercial use
+
+apache-2.0 — verify model card stays current.`,
+  "olmo-2": `## verdict
+
+olmo 2 is allen ai's fully open training story — weights, data, and recipes for teams who care about reproducible open science, not just inference.
+
+## who it's for
+
+research-heavy teams and transparency-focused orgs building on verifiably open training pipelines.
+
+## skip if
+
+you only need the fastest path to a chat ui — llama or qwen families ship with simpler consumer tooling.
+
+## install path
+
+follow allen ai inference docs, provision gpu, download checkpoints, evaluate before swapping production models.
+
+## commercial use
+
+apache-2.0 — training data components may have separate terms; read the model card.`,
+  smollm3: `## verdict
+
+smollm3 proves useful assistants can run tiny — sub-3b models for edge devices, fast classification, and cheap always-on agents.
+
+## who it's for
+
+builders prototyping on laptops or raspberry pi class hardware who need acceptable quality at minimal ram.
+
+## skip if
+
+you need reliable multi-file refactors — pair with larger coder models for hard tasks.
+
+## install path
+
+pull smollm via huggingface or ollama, run a simple prompt suite, measure latency and quality on your task.
+
+## commercial use
+
+apache-2.0 — standard terms.`,
+  devdocs: `## verdict
+
+devdocs is offline-first api documentation in one searchable ui. no tab explosion when you're jumping between mdns, node, and postgres docs.
+
+## who it's for
+
+daily driver developers who want fast doc lookup without network latency or ad-heavy doc sites.
+
+## skip if
+
+you live entirely inside ide lsp hover docs — devdocs shines as a dedicated reference window.
+
+## install path
+
+use the hosted site or install the desktop app, enable only the docsets you need, bind a global hotkey.
+
+## commercial use
+
+mit — documentation content carries upstream licenses.`,
+  opentelemetry: `## verdict
+
+opentelemetry is the vendor-neutral observability standard — traces, metrics, and logs with one instrumentation story across languages.
+
+## who it's for
+
+teams shipping production services who refuse to lock into a single apm vendor's proprietary sdk.
+
+## skip if
+
+you are pre-launch with a single monolith and stdout logging is enough — add otel when debugging gets painful.
+
+## install path
+
+add the sdk to your service, export to jaeger or signoz locally, verify a trace spans your critical request path.
+
+## commercial use
+
+apache-2.0 — specification and sdks are open; backends may be commercial.`,
+  openapi: `## verdict
+
+openapi is the contract layer between frontend, backend, and docs. if your api is public or multi-client, you want a spec — not tribal knowledge in a slack thread.
+
+## who it's for
+
+teams coordinating web, mobile, and third-party integrators who need a single source of truth for endpoints.
+
+## skip if
+
+you are a solo trpc or graphql shop with one client — ceremony may not pay off yet.
+
+## install path
+
+write openapi 3.1 yaml for one service, generate types or mock server, publish docs via redoc or scalar.
+
+## commercial use
+
+apache-2.0 — spec is open; tooling ecosystems vary.`,
+  "create-t3-app": `## verdict
+
+create t3 app is the opinionated next.js starter that saves solo builders from wiring auth, trpc, prisma, and tailwind from scratch every sprint.
+
+## who it's for
+
+typescript indies who want a proven full-stack scaffold with sensible defaults and escape hatches.
+
+## skip if
+
+you are not on next.js or prefer django/fastapi backends — don't force the stack.
+
+## install path
+
+\`pnpm create t3-app@latest\`, pick features you need, deploy to vercel or cloudflare after first vertical slice ships.
+
+## commercial use
+
+mit — stack components keep their own licenses.`,
+  docusaurus: `## verdict
+
+docusaurus is meta's docs site framework that ships search, versioning, and mdx without reinventing technical publishing.
+
+## who it's for
+
+oss projects and indie saas teams who need polished docs with blog and changelog pages on a budget.
+
+## skip if
+
+you only need a single readme — overkill until docs become a product surface.
+
+## install path
+
+\`npx create-docusaurus@latest\`, migrate key pages, deploy to cloudflare pages or github pages.
+
+## commercial use
+
+mit — facebook/oss standard terms.`,
+  fd: `## verdict
+
+fd is find for humans — respects gitignore, sane defaults, and fast enough to replace muscle-memory find aliases.
+
+## who it's for
+
+terminal-first developers who search repos dozens of times a day.
+
+## skip if
+
+you are on windows cmd without wsl — ergonomics degrade; modern terminals help.
+
+## install path
+
+\`brew install fd\` or package manager equivalent, alias find workflows to \`fd\`, combine with ripgrep and fzf.
+
+## commercial use
+
+mit — no restrictions.`,
+  bat: `## verdict
+
+bat is cat with syntax highlighting and git integration — small quality-of-life upgrade that compounds over thousands of file peeks.
+
+## who it's for
+
+cli natives who read configs, logs, and source files in the terminal constantly.
+
+## skip if
+
+you only ever view files in the ide — bat shines in ssh and script sessions.
+
+## install path
+
+install via package manager, alias \`cat\` to \`bat\` if you want, pipe into less for large files.
+
+## commercial use
+
+mit — no restrictions.`,
+  eza: `## verdict
+
+eza is the modern ls — icons, git status columns, and tree views that make directory listing actually informative.
+
+## who it's for
+
+developers who live in the terminal and want at-a-glance repo state without extra commands.
+
+## skip if
+
+you are scripting portable shell — stick to posix ls in scripts; use eza interactively.
+
+## install path
+
+\`brew install eza\`, add aliases for ls/ll/la, configure icons if your terminal supports nerdfonts.
+
+## commercial use
+
+mit — no restrictions.`,
+  mise: `## verdict
+
+mise is the one tool version manager to replace nvm, pyenv, and random asdf plugins — per-project runtimes without shell chaos.
+
+## who it's for
+
+polyglot builders jumping between node, python, and rust repos who want reproducible dev environments.
+
+## skip if
+
+you only touch one language with a single global version — simpler managers are fine.
+
+## install path
+
+install mise, add a \`.mise.toml\` with node and python versions, run \`mise install\` in each repo.
+
+## commercial use
+
+mit — no restrictions.`,
+  "fine-web": `## verdict
+
+fine-web is a large open pretraining corpus from hugging face — a reference dataset for teams training or filtering web-scale text responsibly.
+
+## who it's for
+
+ml researchers and labs building open models who need a documented, community-hosted web dataset.
+
+## skip if
+
+you only run inference — you do not need to download terabytes of pretraining data.
+
+## install path
+
+browse huggingface dataset cards, stream subsets for experiments, document your filtering pipeline for reproducibility.
+
+## commercial use
+
+odc-by — attribution and share-alike style terms; read the dataset license before commercial training.`,
+  "the-stack": `## verdict
+
+the stack is bigcode's open code pretraining dataset — the reference pile for understanding what went into code llms and building your own filters.
+
+## who it's for
+
+teams researching code model training, deduplication, and license-aware dataset curation.
+
+## skip if
+
+you are not training models — consumers of inference should not need this download.
+
+## install path
+
+access via huggingface, use provided tooling for subset extraction, pair with license analysis before training.
+
+## commercial use
+
+openrail-m — restrictive ai license; read carefully before commercial model training.`,
+  "red-pajama": `## verdict
+
+red pajama is an open reproduction of classic llm pretraining data recipes — useful baseline when you need transparent data mixing stories.
+
+## who it's for
+
+researchers comparing training runs and educating stakeholders on what "open data" actually contains.
+
+## skip if
+
+you only fine-tune small adapters — start with task-specific datasets instead of full pretraining corpora.
+
+## install path
+
+clone together's data repo, follow download scripts for the slices you need, log provenance in your experiment tracker.
+
+## commercial use
+
+apache-2.0 for tooling — dataset components may have mixed terms; verify each slice.`,
+  "common-voice": `## verdict
+
+common voice is mozilla's crowdsourced speech corpus — the ethical open path for asr fine-tuning when you cannot ship user audio to a vendor.
+
+## who it's for
+
+teams building voice features who need diverse speakers and documented consent workflows.
+
+## skip if
+
+you only need cloud stt — whisper apis may be faster to ship than dataset wrangling.
+
+## install path
+
+download locale slices from common voice, preprocess for your trainer, fine-tune whisper or conformer models.
+
+## commercial use
+
+mpl-2.0 — file-level copyleft for modifications; read mozilla's contribution terms.`,
+  coco: `## verdict
+
+coco is the computer vision benchmark dataset everyone cites — object detection and segmentation baselines that still matter for eval honesty.
+
+## who it's for
+
+ml engineers validating vision models and teaching stakeholders what "good enough" detection means numerically.
+
+## skip if
+
+you are not doing vision — no reason to download gigabytes of annotated images.
+
+## install path
+
+download via cocodataset.org scripts, run a baseline eval notebook, compare your model metrics against published leaderboards.
+
+## commercial use
+
+cc-by-4.0 — attribution required; images have their own usage norms.`,
+  "human-eval": `## verdict
+
+human eval is the canonical code generation benchmark — before you claim your local coder model "beats copilot," run human eval honestly.
+
+## who it's for
+
+teams comparing qwen2.5-coder, deepseek, and other open weights on reproducible coding tasks.
+
+## skip if
+
+you are not evaluating models — application builders can skip downloading the benchmark harness.
+
+## install path
+
+clone openai/human-eval, run the provided evaluation script against your model endpoint, report pass@k transparently.
+
+## commercial use
+
+mit — benchmark harness is open; do not overfit your product to benchmark trivia.`,
+  "ms-marco": `## verdict
+
+ms marco is the search relevance dataset behind years of ir research — still useful for tuning embeddings and rerankers in rag pipelines.
+
+## who it's for
+
+builders improving doc search and retrieval who need a standard ranking eval set.
+
+## skip if
+
+your retrieval domain is niche — craft a private eval set reflecting real user queries instead.
+
+## install path
+
+download from huggingface, index a subset with your embedder, measure mrr and ndcg against baselines.
+
+## commercial use
+
+mit — microsoft dataset terms apply; verify current license on huggingface.`,
+  "open-images": `## verdict
+
+open images is google's large-scale labeled image set for detection and classification — strong for pretraining vision backbones when coco is too small.
+
+## who it's for
+
+vision teams needing diverse categories and industrial-scale annotation without building a labeling army first.
+
+## skip if
+
+you only need icon classifiers — smaller curated sets train faster and cheaper.
+
+## install path
+
+use cvdfoundation download tools, subset by class, train a detector, validate on your downstream task — not just leaderboard scores.
+
+## commercial use
+
+cc-by-4.0 — attribution required; check image-level licenses for commercial faces and trademarks.`,
+  "mcp-sqlite": `## verdict
+
+sqlite mcp gives agents structured query access to local databases without handing them unrestricted shell — ideal for notebooks and prototypes.
+
+## who it's for
+
+builders wiring cline or continue to local analytics sqlite files and small app databases.
+
+## skip if
+
+you need production postgres with row-level security — use postgres mcp with read-only roles instead.
+
+## install path
+
+add the server from modelcontextprotocol/servers, point at a sqlite file, test select-only queries from your agent.
+
+## commercial use
+
+mit — your data governance is still your job.`,
+  "mcp-brave-search": `## verdict
+
+brave search mcp lets agents fetch fresh web results with an api key boundary instead of brittle HTML scraping in bash loops.
+
+## who it's for
+
+coding agents that need up-to-date docs and release notes during long autonomous tasks.
+
+## skip if
+
+you forbid outbound network from agents — keep retrieval fully local.
+
+## install path
+
+get a brave search api key, configure the mcp server env, verify a doc lookup query from cline or continue.
+
+## commercial use
+
+mit server — brave api has its own pricing and terms.`,
+  "mcp-fetch": `## verdict
+
+fetch mcp is the minimal read-only http tool for agents — grab a url, return markdown, avoid curl footguns in agent shells.
+
+## who it's for
+
+agent stacks that need reference docs and api responses without full browser automation overhead.
+
+## skip if
+
+you need javascript-rendered sites — pair with playwright mcp or firecrawl instead.
+
+## install path
+
+enable fetch from modelcontextprotocol/servers, set allowed domains if your client supports it, test one docs page pull.
+
+## commercial use
+
+mit — respect target site terms of service.`,
+  "mcp-memory": `## verdict
+
+memory mcp is a simple persistent key-value store for agents — scratchpad facts across sessions without dumping everything into the chat window.
+
+## who it's for
+
+long-running coding agent workflows that need stable project conventions and decisions remembered.
+
+## skip if
+
+you already store agent state in your app database with proper auth — prefer one system of record.
+
+## install path
+
+add memory server, seed a few project facts, verify they survive a new agent session in cline or continue.
+
+## commercial use
+
+mit — do not store secrets in agent memory.`,
+  "mcp-supabase": `## verdict
+
+supabase mcp wires agents to your postgres project with guardrailed tools — schema introspection and queries without sharing the service role in chat.
+
+## who it's for
+
+teams building ai features on supabase who want agents to help with sql and migrations safely.
+
+## skip if
+
+agents should never touch production data — keep them on local sqlite fixtures only.
+
+## install path
+
+install supabase-community mcp, configure project ref and read-scoped credentials, test a schema describe call.
+
+## commercial use
+
+apache-2.0 server — supabase platform terms separate.`,
+  "mcp-firecrawl": `## verdict
+
+firecrawl mcp turns messy websites into clean markdown for agents — better than raw fetch when pages are js-heavy or deeply nested.
+
+## who it's for
+
+coding agents researching competitors, docs sites, and changelogs that do not render in simple http GET.
+
+## skip if
+
+you block external crawling on principle — use only local filesystem and git mcp tools.
+
+## install path
+
+get a firecrawl api key, add mendableai/firecrawl-mcp, crawl one docs root, confirm markdown quality in agent context.
+
+## commercial use
+
+mit server — firecrawl api is paid at scale.`,
+  cline: `## verdict
+
+cline is the open-source coding agent in vs code — plan, edit, run terminal commands, and use mcps with models you choose, including local ollama endpoints.
+
+## who it's for
+
+builders who want cursor-like autonomy without locking inference to one vendor's cloud.
+
+## skip if
+
+you need a fully managed enterprise agent with centralized billing and policy — closed products still lead there.
+
+## install path
+
+install the cline extension or cli, point at ollama or an openai-compatible proxy, add filesystem and github mcps, run a bounded refactor task.
+
+## commercial use
+
+apache-2.0 — model and mcp services carry their own terms.`,
+  continue: `## verdict
+
+continue is the open copilot layer for vscode and jetbrains — chat, autocomplete, and agent mode with any model endpoint, including local open weights.
+
+## who it's for
+
+developers standardizing on oss-friendly ai tooling who want one extension across editors and custom model routing.
+
+## skip if
+
+you want a single cli-native agent only — cline or aider may feel more focused depending on workflow.
+
+## install path
+
+install continue extension, configure config.yaml with ollama or litellm, enable autocomplete, test inline edit on a real file.
+
+## commercial use
+
+apache-2.0 — upstream repo is read-only archived in places; extension and cli remain actively used — verify current distribution channel.`,
+  "command-code": `## verdict
+
+command code is a taste-learning terminal agent — it watches how you work and adapts suggestions. product ships via npm and commandcode.ai; the public github mirror is archived, so treat docs and the cli as source of truth.
+
+## who it's for
+
+cli-first builders who want an agent that learns project conventions over time and runs beside git and tests.
+
+## skip if
+
+you require fully auditable oss with an active public repo — prefer cline, continue, or aider with local models.
+
+## install path
+
+install via npm (\`npm i -g command-code\` or official installer), authenticate per commandcode.ai docs, run in a git repo with tests, review what context is sent to the model.
+
+## commercial use
+
+proprietary product — read current terms on commandcode.ai; not a classic oss license despite open tooling ecosystem compatibility.`,
+  aider: `## verdict
+
+aider is the terminal pair programmer that edits repos via git-aware diffs — excellent with open models through ollama and strong for iterative "try this patch" loops.
+
+## who it's for
+
+developers who live in the terminal and want a lightweight coding agent without ide extension overhead.
+
+## skip if
+
+you need rich gui review of multi-file plans — cline's vs code integration may feel safer for visual diffs.
+
+## install path
+
+\`pip install aider-chat\`, export ollama base url, run \`aider\` in your repo, commit after each good patch set.
+
+## commercial use
+
+apache-2.0 — standard terms.`,
 };
 
 function projectMdx(project) {

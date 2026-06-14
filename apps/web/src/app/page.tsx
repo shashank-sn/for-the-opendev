@@ -3,7 +3,7 @@ import Link from "next/link";
 import { NewsletterSignup } from "@/components/newsletter-signup";
 import { PageShell } from "@/components/page-shell";
 import { ProjectCard } from "@/components/project-card";
-import { CATEGORIES, getStaffPicks } from "@/lib/catalog";
+import { CATEGORIES, PROJECTS, getStaffPicks } from "@/lib/catalog";
 import { SPONSOR_URLS } from "@/lib/sponsors";
 
 export default function HomePage() {
@@ -12,7 +12,9 @@ export default function HomePage() {
   return (
     <PageShell>
       <section style={{ padding: "24px 0 56px", maxWidth: 720 }}>
-        <p style={{ color: "var(--accent-text)", margin: "0 0 12px", fontSize: 14 }}>launch catalog · 100 profiles</p>
+        <p style={{ color: "var(--accent-text)", margin: "0 0 12px", fontSize: 14 }}>
+          launch catalog · {PROJECTS.length} profiles
+        </p>
         <h1 style={{ margin: "0 0 16px", fontSize: 48, lineHeight: 1.1, letterSpacing: "-0.03em" }}>
           discover open source worth your time
         </h1>
