@@ -3,7 +3,6 @@ import { GeistMono } from "geist/font/mono";
 import { GeistSans } from "geist/font/sans";
 import "@ftod/ui/styles/tokens.css";
 import "@ftod/ui/styles/base.css";
-import { AuthProvider } from "@/components/auth-provider";
 import { jsonLdScript, websiteJsonLd } from "@/lib/structured-data";
 import "./globals.css";
 
@@ -29,7 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         />
       </head>
       <body>
-        <AuthProvider>{children}</AuthProvider>
+        {children}
         {process.env.NEXT_PUBLIC_PLAUSIBLE_SCRIPT_URL && process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN && (
           <script
             defer

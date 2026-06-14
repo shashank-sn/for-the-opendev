@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import { Button } from "@ftod/ui";
 import { PageShell } from "@/components/page-shell";
 import { SPONSOR_PROFILE_URL, SPONSOR_TIERS } from "@/lib/sponsors";
@@ -68,8 +66,8 @@ function EnterpriseCard({ row }: { row: SupporterRow }) {
   );
 }
 
-export default async function SupportersPage() {
-  const all = await getSupporters();
+export default function SupportersPage() {
+  const all = getSupporters();
   const enterprise = all.filter(isEnterpriseSupporter);
   const wall = all;
 
@@ -120,7 +118,7 @@ export default async function SupportersPage() {
       <section style={{ marginBottom: 40 }}>
         <h2 style={{ fontSize: 22 }}>supporter wall</h2>
         <p style={{ color: "var(--text-secondary)", maxWidth: 560, marginBottom: 20 }}>
-          synced from github sponsors after you log in with github. thank you for keeping discovery independent.
+          updated from github sponsors. thank you for keeping discovery independent.
         </p>
         {wall.length === 0 ? (
           <p style={{ color: "var(--text-tertiary)", fontSize: 14 }}>no sponsors synced yet — be the first.</p>
@@ -148,7 +146,7 @@ export default async function SupportersPage() {
         <h2 style={{ fontSize: 22 }}>founding supporters</h2>
         <p style={{ color: "var(--text-secondary)", maxWidth: 560 }}>
           the first {FOUNDING_SUPPORTER_LIMIT} sponsors get a permanent founding supporter badge — regardless of tier.
-          synced via github sponsors webhook after you log in with github.
+          first {FOUNDING_SUPPORTER_LIMIT} sponsors on github get the badge permanently.
         </p>
       </section>
 

@@ -1,5 +1,3 @@
-export const dynamic = "force-dynamic";
-
 import { notFound } from "next/navigation";
 import { CategoryBrowse } from "@/components/category-browse";
 import { PageShell } from "@/components/page-shell";
@@ -18,7 +16,7 @@ export default async function CategoryPage({ params }: { params: Promise<{ categ
 
   const projects = getProjectsByCategory(category);
   const tags = [...new Set(projects.flatMap((p) => p.tags))].sort();
-  const enterpriseSponsor = (await getSupporters()).find(isEnterpriseSupporter);
+  const enterpriseSponsor = getSupporters().find(isEnterpriseSupporter);
 
   return (
     <PageShell title={meta.label} subtitle={`${projects.length} launch profiles`}>

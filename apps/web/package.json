@@ -3,41 +3,30 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "dev": "DATABASE_URL=../../.data/fortheopen.db BETTER_AUTH_URL=http://localhost:3000 BETTER_AUTH_SECRET=dev-local-secret-32-characters-min next dev",
-    "build": "DATABASE_URL=../../.data/fortheopen.db BETTER_AUTH_URL=${BETTER_AUTH_URL:-http://localhost:3000} BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET:-dev-local-secret-32-characters-min} next build",
+    "dev": "NEXT_PUBLIC_SITE_URL=http://localhost:3000 next dev",
+    "build": "NEXT_PUBLIC_SITE_URL=${NEXT_PUBLIC_SITE_URL:-https://fortheopen.dev} next build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
-    "pagefind": "pagefind --site .next/server/app --output-path public/pagefind",
-    "build:cloudflare": "FTOD_DB_DRIVER=d1 pnpm build && pnpm pagefind && FTOD_DB_DRIVER=d1 opennextjs-cloudflare build --skipNextBuild && node scripts/patch-worker-email.mjs",
-    "preview:cloudflare": "opennextjs-cloudflare preview",
-    "deploy:cloudflare": "pnpm build:cloudflare && opennextjs-cloudflare deploy"
+    "pagefind": "pagefind --site out --output-path out/pagefind"
   },
   "dependencies": {
-    "@ftod/auth": "workspace:*",
-    "@ftod/db": "workspace:*",
     "@ftod/ui": "workspace:*",
-    "@libsql/client": "^0.14.0",
-    "better-auth": "^1.2.5",
-    "drizzle-orm": "^0.39.3",
     "geist": "^1.3.1",
     "gray-matter": "^4.0.3",
     "lucide-react": "^0.475.0",
     "next": "^15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "postal-mime": "^2.4.3",
     "react-markdown": "^9.0.3"
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.19.11",
     "@types/node": "^22.10.7",
     "@types/react": "^19.0.8",
     "@types/react-dom": "^19.0.3",
     "eslint": "^9.18.0",
     "eslint-config-next": "^15.1.6",
     "pagefind": "^1.3.0",
-    "typescript": "^5.7.3",
-    "wrangler": "4"
+    "typescript": "^5.7.3"
   }
 }

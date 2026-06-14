@@ -21,7 +21,7 @@ export function SiteFooter() {
               <Link href="/comparisons">comparisons</Link>
               <Link href="/collections">collections</Link>
               <Link href="/launches">launches</Link>
-              <Link href="/submit">submit a project</Link>
+              <a href="https://github.com/shashank-sn/for-the-opendev/issues/new">submit a project</a>
               <Link href="/about">about</Link>
             </div>
           </div>
@@ -52,7 +52,7 @@ export function SiteFooter() {
           </div>
         </div>
         <p style={{ marginTop: 40, color: "var(--text-tertiary)", fontSize: 13 }}>
-          mit licensed · editorial content cc-by-4.0 · built with better-auth, next.js, pagefind
+          mit licensed · editorial content cc-by-4.0 · built with next.js, pagefind, github pages
         </p>
       </div>
     </footer>

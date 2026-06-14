@@ -18,7 +18,6 @@ for the open dev is a curated discovery layer for solo and indie builders — no
 - **staff picks** with full editorial depth — verdict, install path, commercial use notes
 - **21 comparisons** — self-hosted analytics, coding agents, local llms, and more
 - **9 collections** — indie saas infra, local ai stack, coding agent stack, terminal productivity
-- **community layer** — lists, structured reviews, project submissions, launch votes
 - **search** — pagefind-powered, no external index
 
 editorial content is cc-by-4.0. rankings are never paid. sponsored placements are always labeled.
@@ -36,7 +35,7 @@ discovery stays free. sponsorship keeps it independent.
 | open source sustainer | $100/mo | [sponsor →](https://github.com/sponsors/shashank-sn?frequency=recurring) |
 | custom amount | you choose | [sponsor →](https://github.com/sponsors/shashank-sn) |
 
-[see all tiers on /supporters](https://fortheopen-dev.emailshashanksn.workers.dev/supporters)
+[see all tiers on /supporters](https://fortheopen.dev/supporters)
 
 ---
 
@@ -44,11 +43,9 @@ discovery stays free. sponsorship keeps it independent.
 
 built entirely on open source:
 
-- [better-auth](https://better-auth.com) — auth
-- [next.js](https://nextjs.org) — app
-- [cloudflare workers](https://workers.cloudflare.com) + d1 — hosting & database
-- [cloudflare email service](https://developers.cloudflare.com/email-service/) — all email (send, receive, newsletter)
-- [plausible](https://github.com/plausible/analytics) — analytics (self-hosted)
+- [next.js](https://nextjs.org) — app (static export)
+- [github pages](https://pages.github.com) — hosting + custom domain
+- [plausible](https://github.com/plausible/analytics) — analytics (optional script)
 - [pagefind](https://pagefind.app) — search
 - lucide + geist — icons & type
 

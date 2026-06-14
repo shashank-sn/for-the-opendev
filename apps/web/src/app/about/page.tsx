@@ -27,13 +27,15 @@ export default function AboutPage() {
 
         <h2>open source stack</h2>
         <p>
-          we dogfood what we list where possible: better-auth for auth, next.js for the app, pagefind for search, lucide
-          + geist for ui. the repo is public mit at github.com/shashank-sn/for-the-opendev.
+          we dogfood what we list where possible: next.js for the app, pagefind for search, github pages for hosting,
+          lucide + geist for ui. the repo is public mit at github.com/shashank-sn/for-the-opendev.
         </p>
 
         <h2>contact</h2>
         <p>
-          submissions: <a href="/submit">submit a project</a> · enterprise sponsors: hello@fortheopen.dev
+          submissions:{" "}
+          <a href="https://github.com/shashank-sn/for-the-opendev/issues/new">open a github issue</a> · enterprise
+          sponsors: hello@fortheopen.dev
         </p>
       </div>
     </PageShell>

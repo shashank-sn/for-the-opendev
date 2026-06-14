@@ -33,18 +33,16 @@ tool pickers live in `.cursor/rules/codegraph.mdc` and `.claude/CLAUDE.md`.
 ## project context
 
 - product: curated open-source discovery for indie builders. profiles, comparisons, collections, community layer.
-- monorepo: `apps/web` (next.js on cloudflare workers + d1), `packages/*` (ui, auth, db).
+- monorepo: `apps/web` (next.js static export), `packages/*` (ui; legacy auth/db packages unused by web).
 - content: `/content`, generated via `pnpm content:generate`.
-- deploy: cloudflare workers. staging at `fortheopen-dev.emailshashanksn.workers.dev`.
-- email: all mail via cloudflare (send + route). stored in sql `emails` table. see `apps/web/src/lib/email.ts` and `apps/web/cloudflare/email-inbound.mjs`.
-- analytics: self-hosted plausible script + `/analytics` dashboard (password-only). stats api proxied in `apps/web/src/lib/plausible.ts`.
+- deploy: github pages from `main` via `.github/workflows/pages.yml`. custom domain `fortheopen.dev` via `apps/web/public/CNAME`.
+- analytics: optional plausible script in layout (build-time env vars).
 
 ## before you ship
 
 ```bash
 pnpm typecheck
 pnpm build
-pnpm --filter @ftod/web build:cloudflare   # FTOD_DB_DRIVER=d1 in CI
 pnpm codegraph:sync
 ```
 

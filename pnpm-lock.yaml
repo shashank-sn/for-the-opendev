@@ -6,32 +6,13 @@ settings:
 
 importers:
 
-  .:
-    devDependencies:
-      '@libsql/client':
-        specifier: ^0.14.0
-        version: 0.14.0
+  .: {}
 
   apps/web:
     dependencies:
-      '@ftod/auth':
-        specifier: workspace:*
-        version: link:../../packages/auth
-      '@ftod/db':
-        specifier: workspace:*
-        version: link:../../packages/db
       '@ftod/ui':
         specifier: workspace:*
         version: link:../../packages/ui
-      '@libsql/client':
-        specifier: ^0.14.0
-        version: 0.14.0
-      better-auth:
-        specifier: ^1.2.5
-        version: 1.6.18(drizzle-orm@0.39.3(@libsql/client@0.14.0)(kysely@0.29.2))(next@15.5.19(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      drizzle-orm:
-        specifier: ^0.39.3
-        version: 0.39.3(@libsql/client@0.14.0)(kysely@0.29.2)
       geist:
         specifier: ^1.3.1
         version: 1.7.2(next@15.5.19(react-dom@19.2.7(react@19.2.7))(react@19.2.7))
@@ -44,9 +25,6 @@ importers:
       next:
         specifier: ^15.1.6
         version: 15.5.19(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
-      postal-mime:
-        specifier: ^2.4.3
-        version: 2.7.4
       react:
         specifier: ^19.0.0
         version: 19.2.7
@@ -57,9 +35,6 @@ importers:
         specifier: ^9.0.3
         version: 9.1.0(@types/react@19.2.17)(react@19.2.7)
     devDependencies:
-      '@opennextjs/cloudflare':
-        specifier: ^1.19.11
-        version: 1.19.11(next@15.5.19(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(wrangler@4.100.0)
       '@types/node':
         specifier: ^22.10.7
         version: 22.19.21
@@ -81,9 +56,6 @@ importers:
       typescript:
         specifier: ^5.7.3
         version: 5.9.3
-      wrangler:
-        specifier: '4'
-        version: 4.100.0
 
   packages/auth:
     dependencies:
@@ -3620,9 +3592,6 @@ packages:
   possible-typed-array-names@1.1.0:
     resolution: {integrity: sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg==}
     engines: {node: '>= 0.4'}
-
-  postal-mime@2.7.4:
-    resolution: {integrity: sha512-0WdnFQYUrPGGTFu1uOqD2s7omwua8xaeYGdO6rb88oD5yJ/4pPHDA4sdWqfD8wQVfCny563n/HQS7zTFft+f/g==}
 
   postcss@8.4.31:
     resolution: {integrity: sha512-PS08Iboia9mts/2ygV3eLpY5ghnUcfLV/EXTOW1E2qYxJKGGBUtNjN76FYHnMs36RmARn41bC0AZmn+rR0OVpQ==}
@@ -7972,8 +7941,6 @@ snapshots:
   picomatch@4.0.4: {}
 
   possible-typed-array-names@1.1.0: {}
-
-  postal-mime@2.7.4: {}
 
   postcss@8.4.31:
     dependencies:

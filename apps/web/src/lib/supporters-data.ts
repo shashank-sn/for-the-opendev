@@ -1,12 +1,11 @@
-import { getDb, supporters } from "@ftod/db";
-import { desc } from "drizzle-orm";
+import supportersData from "../../data/supporters.json";
 
 export type SupporterRow = {
   githubLogin: string;
   tier: string;
   amountCents: number | null;
   isEnterprise: boolean | null;
-  syncedAt: Date;
+  syncedAt: string;
 };
 
 const TIER_LABELS: Record<string, string> = {
@@ -24,16 +23,6 @@ export function isEnterpriseSupporter(row: SupporterRow) {
   return Boolean(row.isEnterprise) || row.tier === "sustainer";
 }
 
-export async function getSupporters(): Promise<SupporterRow[]> {
-  return getDb()
-    .select({
-      githubLogin: supporters.githubLogin,
-      tier: supporters.tier,
-      amountCents: supporters.amountCents,
-      isEnterprise: supporters.isEnterprise,
-      syncedAt: supporters.syncedAt,
-    })
-    .from(supporters)
-    .orderBy(desc(supporters.syncedAt))
-    .limit(100);
+export function getSupporters(): SupporterRow[] {
+  return supportersData as SupporterRow[];
 }

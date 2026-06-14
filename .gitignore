@@ -1,8 +1,10 @@
 node_modules
 .pnpm-store
 .next
+out
 .open-next
 .wrangler
+apps/web/public/badges
 .dev.vars
 .env
 .env.local

@@ -4,11 +4,8 @@
   "license": "MIT",
   "scripts": {
     "dev": "pnpm --filter @ftod/web dev",
-    "build": "pnpm --filter @ftod/web build && pnpm --filter @ftod/web pagefind",
+    "build": "node scripts/generate-badges.mjs && pnpm --filter @ftod/web build && pnpm --filter @ftod/web pagefind",
     "lint": "pnpm -r lint",
-    "db:generate": "pnpm --filter @ftod/db generate",
-    "db:migrate": "pnpm --filter @ftod/db migrate",
-    "db:init": "node scripts/init-db.mjs",
     "content:generate": "node scripts/generate-content.mjs",
     "typecheck": "pnpm -r typecheck",
     "codegraph:init": "npx @colbymchenry/codegraph init -i",
@@ -20,8 +17,5 @@
   "engines": {
     "node": ">=20"
   },
-  "packageManager": "pnpm@9.15.0",
-  "devDependencies": {
-    "@libsql/client": "^0.14.0"
-  }
+  "packageManager": "pnpm@9.15.0"
 }

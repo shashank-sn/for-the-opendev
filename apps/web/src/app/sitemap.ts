@@ -1,3 +1,5 @@
+export const dynamic = "force-static";
+
 import type { MetadataRoute } from "next";
 import { ALL_TAGS, CATEGORIES, COLLECTIONS, COMPARISONS, PROJECTS } from "@/lib/catalog";
 
@@ -11,12 +13,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/about",
     "/supporters",
     "/search",
-    "/submit",
     "/launches",
     "/comparisons",
     "/collections",
     "/tags",
-    "/dashboard",
   ].map((path) => ({
     url: `${base}${path}`,
     lastModified: now,
