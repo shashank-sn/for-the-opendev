@@ -21,13 +21,17 @@ pnpm dev
 
 ### codegraph (default for agents & local dev)
 
-this repo indexes code with [codegraph](https://www.npmjs.com/package/@colbymchenry/codegraph). the sqlite db in `.codegraph/` is gitignored — each machine builds its own.
+we index the repo with [codegraph](https://www.npmjs.com/package/@colbymchenry/codegraph). the sqlite db in `.codegraph/` is gitignored. each machine builds its own.
 
-- **agents:** use codegraph mcp tools for exploration (see `AGENTS.md`). cursor/claude configs live in `.cursor/` and `.mcp.json`.
-- **after code changes:** `pnpm codegraph:sync` — git hooks install automatically on `pnpm install` (`post-commit`, `post-merge`, `post-checkout`).
-- **check index:** `pnpm codegraph:status`
+- agents: use codegraph mcp tools for exploration (see `AGENTS.md`). cursor/claude configs live in `.cursor/` and `.mcp.json`.
+- after code changes: `pnpm codegraph:sync`. git hooks install on `pnpm install` (`post-commit`, `post-merge`, `post-checkout`).
+- check index: `pnpm codegraph:status`
 
 run `pnpm typecheck`, `pnpm build`, `pnpm codegraph:sync`, and `pnpm --filter @ftod/web build:cloudflare` (with `FTOD_DB_DRIVER=d1`) before opening a pr.
+
+### voice (prose)
+
+user-facing copy and docs should sound like shashank wrote them. run `hyv scan` / `hyv rewrite` with profile `shashank` before you open a pr that touches prose.
 
 copy `.env.example` to `apps/web/.env.local` and fill oauth secrets for auth.
 

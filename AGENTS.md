@@ -1,44 +1,44 @@
-# Agent instructions — for the open dev
+# agent instructions — for the open dev
 
-This repo uses [CodeGraph](https://www.npmjs.com/package/@colbymchenry/codegraph) for code intelligence. Treat it as the default way to explore and reason about the codebase.
+codegraph is how you read this repo. structural questions go through it first.
 
-## CodeGraph — required for code exploration
+## codegraph (required)
 
-If `.codegraph/` exists (it should after `pnpm install`), use the CodeGraph MCP tools for **all** structural exploration: search, context, callers/callees, impact, file structure.
+after `pnpm install`, `.codegraph/` should exist locally. use the codegraph mcp tools for anything about symbols, call paths, or file structure.
 
-| Question | Tool |
+| question | tool |
 |---|---|
-| Where is X defined? | `codegraph_search` |
-| What calls Y? | `codegraph_callers` |
-| What does Y call? | `codegraph_callees` |
-| How does X reach Y? | `codegraph_trace` |
-| What breaks if I change Z? | `codegraph_impact` |
-| Context for a task | `codegraph_context` |
-| Several related symbols | `codegraph_explore` |
-| Files under a path | `codegraph_files` |
-| Index health | `codegraph_status` |
+| where is X defined? | `codegraph_search` |
+| what calls Y? | `codegraph_callers` |
+| what does Y call? | `codegraph_callees` |
+| how does X reach Y? | `codegraph_trace` |
+| what breaks if I change Z? | `codegraph_impact` |
+| context for a task | `codegraph_context` |
+| several related symbols | `codegraph_explore` |
+| files under a path | `codegraph_files` |
+| index health | `codegraph_status` |
 
-**Rules:**
+rules:
 
-- Answer exploration questions directly with CodeGraph — do not spawn grep/read sub-agents or long read loops for symbol lookup.
-- Use grep/read only for literal text (strings, comments, copy) or when you already have a specific file open.
-- After editing code, run `pnpm codegraph:sync` (or wait for git hooks / MCP watcher) before re-querying symbols you just changed.
+- answer exploration with codegraph directly. don't spin up grep/read sub-agents to find a function name.
+- grep/read is for literal text: strings, comments, copy, log lines. or when you already have the file open.
+- edited code? run `pnpm codegraph:sync` (or wait for git hooks / the mcp watcher) before you query symbols you just touched.
 
-**Fresh clone:** `pnpm codegraph:init` builds the local index (`.codegraph/codegraph.db` is gitignored).
+fresh clone: `pnpm codegraph:init` builds the local index. `.codegraph/codegraph.db` stays gitignored.
 
-**No `.codegraph/` yet:** run `pnpm codegraph:init` before exploring — do not ask for permission on agent sessions.
+no `.codegraph/` yet: run `pnpm codegraph:init` before exploring. agent sessions shouldn't pause to ask.
 
-See also `.cursor/rules/codegraph.mdc` and `.claude/CLAUDE.md` for tool-selection detail.
+tool pickers live in `.cursor/rules/codegraph.mdc` and `.claude/CLAUDE.md`.
 
-## Project context
+## project context
 
-- **Product:** curated open-source discovery for indie builders — profiles, comparisons, collections, community layer.
-- **Monorepo:** `apps/web` (Next.js on Cloudflare Workers + D1), `packages/*` (ui, auth, db).
-- **Content:** `/content` — generated into the app via `pnpm content:generate`.
-- **Deploy:** Cloudflare Workers; staging at `fortheopen-dev.emailshashanksn.workers.dev`.
-- **Auth email:** Cloudflare Email Service binding (`apps/web/src/lib/email.ts`), not SMTP.
+- product: curated open-source discovery for indie builders. profiles, comparisons, collections, community layer.
+- monorepo: `apps/web` (next.js on cloudflare workers + d1), `packages/*` (ui, auth, db).
+- content: `/content`, generated via `pnpm content:generate`.
+- deploy: cloudflare workers. staging at `fortheopen-dev.emailshashanksn.workers.dev`.
+- auth email: cloudflare email service binding in `apps/web/src/lib/email.ts`. smtp is out.
 
-## Before shipping code changes
+## before you ship
 
 ```bash
 pnpm typecheck
@@ -47,4 +47,8 @@ pnpm --filter @ftod/web build:cloudflare   # FTOD_DB_DRIVER=d1 in CI
 pnpm codegraph:sync
 ```
 
-Deployments must come from `shashank-sn/for-the-opendev` only.
+deployments ship from `shashank-sn/for-the-opendev` only.
+
+## voice (prose)
+
+editorial copy, docs, and user-facing text in this repo should match shashank's voice profile. run hyv scan/rewrite before shipping prose. profile: `shashank` (hold your voice).
