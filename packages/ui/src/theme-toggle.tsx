@@ -33,14 +33,14 @@ export function ThemeToggle() {
         justifyContent: "center",
         width: 40,
         height: 40,
-        borderRadius: "var(--radius-md)",
-        boxShadow: "var(--shadow-border)",
-        background: "var(--bg-surface)",
-        color: "var(--text-secondary)",
+        borderRadius: "var(--radius-lg)",
+        border: "1px solid var(--border)",
+        background: "var(--card)",
+        color: "var(--muted-foreground)",
         cursor: "pointer",
-        transitionProperty: "box-shadow, scale",
-        transitionDuration: "150ms",
-        transitionTimingFunction: "ease-out",
+        transitionProperty: "background, border-color, color",
+        transitionDuration: "200ms",
+        transitionTimingFunction: "ease",
       }}
     >
       {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}

@@ -20,18 +20,18 @@ type ButtonAsLink = SharedProps &
 
 const styles: Record<Variant, CSSProperties> = {
   primary: {
-    background: "var(--accent)",
-    color: "#fff",
-    border: "1px solid var(--accent)",
+    background: "var(--primary)",
+    color: "var(--primary-foreground)",
+    border: "1px solid var(--primary)",
   },
   secondary: {
-    background: "transparent",
-    color: "var(--text-primary)",
-    border: "1px solid var(--border-strong)",
+    background: "var(--card)",
+    color: "var(--foreground)",
+    border: "1px solid var(--border)",
   },
   ghost: {
     background: "transparent",
-    color: "var(--text-secondary)",
+    color: "var(--muted-foreground)",
     border: "1px solid transparent",
   },
 };
@@ -44,8 +44,8 @@ export function Button(props: ButtonAsButton | ButtonAsLink) {
     alignItems: "center",
     justifyContent: "center",
     gap: 8,
-    padding: "9px 20px",
-    borderRadius: "var(--radius-sm)",
+    padding: "9px 16px",
+    borderRadius: "var(--radius-lg)",
     fontWeight: 500,
     fontSize: 14,
     textDecoration: "none",
@@ -53,8 +53,8 @@ export function Button(props: ButtonAsButton | ButtonAsLink) {
     minHeight: 40,
     letterSpacing: "-0.01em",
     transitionProperty: "background, border-color, box-shadow, scale, color, transform",
-    transitionDuration: "250ms",
-    transitionTimingFunction: "ease-out",
+    transitionDuration: "200ms",
+    transitionTimingFunction: "ease",
     ...styles[variant],
     ...style,
   };
@@ -81,7 +81,7 @@ export function Button(props: ButtonAsButton | ButtonAsLink) {
       style={{
         ...sharedStyle,
         cursor: buttonProps.disabled ? "not-allowed" : "pointer",
-        opacity: buttonProps.disabled ? 0.6 : 1,
+        opacity: buttonProps.disabled ? 0.64 : 1,
       }}
     >
       {children}

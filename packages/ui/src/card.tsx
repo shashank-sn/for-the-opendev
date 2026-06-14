@@ -11,11 +11,15 @@ export function Card({
   href?: string;
 }) {
   const baseStyle: CSSProperties = {
-    background: "var(--bg-surface)",
-    border: "1px solid var(--border-default)",
-    borderRadius: "var(--radius-xl, 20px)",
-    padding: 20,
-    transition: "border-color 0.15s, background 0.15s",
+    borderRadius: "var(--radius-2xl)",
+    border: "1px solid var(--border)",
+    background: "var(--card)",
+    color: "var(--card-foreground)",
+    padding: 24,
+    boxShadow: "0 1px 0 0 rgba(0, 0, 0, 0.04)",
+    transitionProperty: "transform, box-shadow",
+    transitionDuration: "200ms",
+    transitionTimingFunction: "ease",
     ...style,
   };
 
